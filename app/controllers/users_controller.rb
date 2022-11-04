@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    wrap_parameters
-rescue_from ActiveRecord:RecordInvalid, with: :record_invalid_response
+    wrap_parameters format: []
+    rescue_from ActiveRecord:RecordInvalid, with: :record_invalid_response
 
     def create
         user = User.create!(user_params)
@@ -8,10 +8,20 @@ rescue_from ActiveRecord:RecordInvalid, with: :record_invalid_response
     rescue ActiveRecord::RecordInvalid => invalid
     end
 
+    def show
+        user = User.find(session[:user_id])
+        if user
+            render json: user
+        else
+            render json: { error: "Not authorized" }, status: :unauthorized
+        end
+    end
+
     private
 
     def user_params
-        params.permit(:username, :password, :first_name, :last_name, :phone_number, :email)
+        params.permit(:username, :password)
+        # :first_name, :last_name, :phone_number, :email
     end
 
     def record_invalid_response(user)
