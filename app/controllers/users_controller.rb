@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
     wrap_parameters format: []
-    rescue_from ActiveRecord:RecordInvalid, with: :record_invalid_response
+    rescue_from ActiveRecord::RecordInvalid, with: :record_invalid_response
+
+    def index
+        users = User.all
+        render json: users
+    end
 
     def create
         user = User.create!(user_params)
         render json: user, status: :created
-    rescue ActiveRecord::RecordInvalid => invalid
     end
 
     def show

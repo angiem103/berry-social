@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # get "/me", to: "users#show"
   # post "/users", to: "users#create"
 
-  resources :users, only: [:create, :show]
+  resources :users, only: [:index, :create, :show]
  
 
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
