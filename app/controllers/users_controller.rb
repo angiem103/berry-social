@@ -28,8 +28,8 @@ class UsersController < ApplicationController
         # :first_name, :last_name, :phone_number, :email
     end
 
-    def record_invalid_response(user)
-        render json: {error: user.errors.full_messages}, status: :unprocessable_entity
+    def record_invalid_response(invalid)
+        render json: {error: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 
 end
