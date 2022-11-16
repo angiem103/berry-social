@@ -1,32 +1,23 @@
 import React from 'react';
-import Login from "./Login";
-import SignUp from "./SignUp";
-import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
 
-function Home() {
+function Home({ currentUser, setCurrentUser }) {
 
-    const [user, setUser] = useState(null);
-    const navigate = useNavigate();
 
-    function handleLogin(user) {
-        setUser(user)
-    }
+    function handleLogOut() {
+        fetch('/logout',{method: "DELETE"}).then((r) => {
+            if(r.ok){
+                setCurrentUser(null)
+            }
+        })
+    };
 
-    function navigateToSignUp () {
-        navigate('/signup')
-    }
     return (
-        <div>
 
         <div>
-            <h1>Hello!</h1>
-            <Login onLogin={handleLogin}/>
-            <button onClick={navigateToSignUp}>Sign Up</button>
+            <h1>Hi {currentUser.first_name}</h1>
+            <button onClick={handleLogOut}>Logout</button>
         </div>
 
-
-        </div>
     );
 }
 
