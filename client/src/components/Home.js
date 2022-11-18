@@ -13,12 +13,17 @@ function Home({ currentUser, setCurrentUser }) {
 
     return (
 
+
         <div>
-            <h1>Hi {currentUser.first_name}</h1>
+            <h1 style={{color: "red"}}>Hi {currentUser.first_name}</h1>
             <button onClick={handleLogOut}>Logout</button>
         </div>
+
 
     );
 }
 
 export default Home;
+
+
+

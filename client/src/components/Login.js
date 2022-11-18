@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import "../index.css";
 
 function Login({ onLogin }) {
     const [username, setUsername] = useState("");
@@ -26,14 +27,20 @@ function Login({ onLogin }) {
     }
   
     return (
-      <form onSubmit={handleSubmit}>
-        <p>Username</p>
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <p>Password</p>
-        <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <br />
-        <button type="submit">Login</button>
-        <button onClick={navigateToSignUp}>Sign Up</button>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="title">Login</div>
+        <div className="input-container ic1">
+        <input id="username" className="input" type="text" placeholder=" " value={username} onChange={(e) => setUsername(e.target.value)}/>
+        <div className="cut cut-short"></div>
+        <label htmlFor="username" className="placeholder">Username</label>
+      </div>
+      <div className="input-container ic2">
+        <input id="password" className="input" type="text" placeholder=" " value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <div className="cut cut-short"></div>
+        <label htmlFor="password" className="placeholder">Password</label>
+      </div>
+      <button type="submit" className="submit">Log In</button>
+        <button type="submit" className="submit" onClick={navigateToSignUp}>Sign Up</button>
       </form>
     );
   }

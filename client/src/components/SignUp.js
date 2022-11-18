@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../index.css"
+
 
 function SignUp({setUser}) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
     const [first_name, setFirstName] = useState("")
     const [last_name, setLastName] = useState("")
     const [phone_number, setPhoneNumber] = useState("")
@@ -41,10 +42,11 @@ function SignUp({setUser}) {
     }
 
     return (
-        <div>
-         <form onSubmit={handleSignUp}>
-            <p>Username</p>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+
+         <form className="signup-form" onSubmit={handleSignUp}>
+             <div className="title">Sign Up</div>
+            {/* <p>Username</p>
+            <input class="input-container ic1" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
             <p>Password</p>
             <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
             <p>First Name</p>
@@ -55,10 +57,47 @@ function SignUp({setUser}) {
             <input type="text"value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)}/>
             <p>Email</p>
             <input type="text"value={email} onChange={(e) => setEmail(e.target.value)}/>
-            <br />
-            <button type="submit">Sign Up</button>
+            <br /> */}
+
+  
+   
+
+      <div className="input-container ic1">
+        <input id="firstname" className="input" type="text" placeholder=" " value={first_name} onChange={(e) => setFirstName(e.target.value)}/>
+        <div className="cut"></div>
+        <label htmlFor="firstname" className="placeholder">First name</label>
+      </div>
+      <div className="input-container ic2">
+        <input id="lastname" className="input" type="text" placeholder=" " value={last_name} onChange={(e) => setLastName(e.target.value)} />
+        <div className="cut"></div>
+        <label htmlFor="lastname" className="placeholder">Last name</label>
+      </div>
+      <div className="input-container ic2">
+        <input id="phonenumber" className="input" type="text" placeholder=" " value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)}/>
+        <div className="cut cut-short"></div>
+        <label htmlFor="phonenumber" className="placeholder">Phone Number</label>
+      </div>
+      <div className="input-container ic2">
+        <input id="email" className="input" type="text" placeholder=" " value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <div className="cut cut-short"></div>
+        <label htmlFor="email" className="placeholder">Email</label>
+      </div>
+      <div className="input-container ic2">
+        <input id="username" className="input" type="text" placeholder=" " value={username} onChange={(e) => setUsername(e.target.value)}/>
+        <div className="cut cut-short"></div>
+        <label htmlFor="username" className="placeholder">Username</label>
+      </div>
+      <div className="input-container ic2">
+        <input id="password" className="input" type="text" placeholder=" " value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <div className="cut cut-short"></div>
+        <label htmlFor="password" className="placeholder">Password</label>
+      </div>
+
+     
+
+            <button type="submit" className="submit">Sign Up</button>
         </form>
-        </div>
+
     );
 }
 
