@@ -27,6 +27,8 @@ function Login({ onLogin }) {
     }
   
     return (
+      <div className='login-background'>
+        <h1 id="berry-social">Berry Social</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="title">Login</div>
         <div className="input-container ic1">
@@ -40,8 +42,9 @@ function Login({ onLogin }) {
         <label htmlFor="password" className="placeholder">Password</label>
       </div>
       <button type="submit" className="submit">Log In</button>
-        <button type="submit" className="submit" onClick={navigateToSignUp}>Sign Up</button>
+        <button className="submit" onClick={navigateToSignUp}>Sign Up</button>
       </form>
+      </div>
     );
   }
 

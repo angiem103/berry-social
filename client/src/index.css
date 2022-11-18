@@ -1,9 +1,17 @@
-body {
+* {
+  margin: 0;
+  padding: 0;
+  }
+
+
+.login-background {
   align-items: center;
-  /* background-color: #000; */
+  background-image: url("https://img.freepik.com/premium-photo/wine-macaroons-strawberry-flowers-pink-background_185193-42672.jpg?w=2000");
   display: flex;
   justify-content: center;
   height: 100vh;
+  background-size: cover;
+  vertical-align: middle;
 }
 
 .signup-form {
@@ -15,12 +23,14 @@ body {
   width: 400px;
 }
 .login-form {
-  background-color: #15172b;
+  background-color:rgba(238, 99, 143, 0.598);
   border-radius: 20px;
   box-sizing: border-box;
   height: 500px;
   padding: 20px;
   width: 400px;
+  position: absolute;
+  margin-top: 90px;
 }
 
 
@@ -55,11 +65,11 @@ body {
 }
 
 .input {
-  background-color: #303245;
+  background-color: white;
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
-  color: #eee;
+  color: #65657b;
   font-size: 18px;
   height: 100%;
   outline: 0;
@@ -68,7 +78,7 @@ body {
 }
 
 .cut {
-  background-color: #15172b;
+  background-color: rgba(238, 99, 143, 0.117);
   border-radius: 10px;
   height: 20px;
   left: 20px;
@@ -80,7 +90,7 @@ body {
 }
 
 .cut-short {
-  width: 50px;
+  width: 75px;
 }
 
 .input:focus ~ .cut,
@@ -114,7 +124,7 @@ body {
 }
 
 .submit {
-  background-color: #08d;
+  background-color: rgba(238, 99, 143, 0.814);
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
@@ -129,5 +139,13 @@ body {
 }
 
 .submit:active {
-  background-color: #06b;
+  background-color: rgba(75, 187, 155, 0.656);
+}
+
+#berry-social {
+ height: 675px;
+ font-family: sans-serif;
+ color: rgb(255, 255, 255);
+ font-size: 75px;
+ -webkit-text-stroke: 1px rgb(240, 182, 221); 
 }
