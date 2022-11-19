@@ -12,6 +12,7 @@ function SignUp({setUser}) {
     const [last_name, setLastName] = useState("")
     const [phone_number, setPhoneNumber] = useState("")
     const [email, setEmail] = useState("")
+    const [errors, setErrors] = useState([])
 
     const navigate = useNavigate()
 
@@ -36,10 +37,11 @@ function SignUp({setUser}) {
             if(r.ok){
                 r.json(setUser(user)).then(navigate('/'))
             } else {
-                console.log("not valid")
+                r.json().then((err) => setErrors(err.error))
             }
         })
     }
+
 
     return (
         <div className='signup-background'>
@@ -75,6 +77,7 @@ function SignUp({setUser}) {
                 <div className="cut cut-short"></div>
                 <label htmlFor="password" className="placeholder">Password</label>
             </div>
+            <ul>{errors}</ul>
             <button type="submit" className="submit">Sign Up</button>
          </form>
         </div>
