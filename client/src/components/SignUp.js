@@ -42,46 +42,43 @@ function SignUp({setUser}) {
     }
 
     return (
-
+        <div className='signup-background'>
          <form className="signup-form" onSubmit={handleSignUp}>
              <div className="title">Sign Up</div>
-      <div className="input-container ic1">
-        <input id="firstname" className="input" type="text" placeholder=" " value={first_name} onChange={(e) => setFirstName(e.target.value)}/>
-        <div className="cut"></div>
-        <label htmlFor="firstname" className="placeholder">First name</label>
-      </div>
-      <div className="input-container ic2">
-        <input id="lastname" className="input" type="text" placeholder=" " value={last_name} onChange={(e) => setLastName(e.target.value)} />
-        <div className="cut"></div>
-        <label htmlFor="lastname" className="placeholder">Last name</label>
-      </div>
-      <div className="input-container ic2">
-        <input id="phonenumber" className="input" type="text" placeholder=" " value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)}/>
-        <div className="cut cut-short"></div>
-        <label htmlFor="phonenumber" className="placeholder">Phone Number</label>
-      </div>
-      <div className="input-container ic2">
-        <input id="email" className="input" type="text" placeholder=" " value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <div className="cut cut-short"></div>
-        <label htmlFor="email" className="placeholder">Email</label>
-      </div>
-      <div className="input-container ic2">
-        <input id="username" className="input" type="text" placeholder=" " value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <div className="cut cut-short"></div>
-        <label htmlFor="username" className="placeholder">Username</label>
-      </div>
-      <div className="input-container ic2">
-        <input id="password" className="input" type="text" placeholder=" " value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <div className="cut cut-short"></div>
-        <label htmlFor="password" className="placeholder">Password</label>
-      </div>
-
-     
-
+            <div className="input-container ic1">
+                <input id="firstname" className="input" type="text" placeholder=" " value={first_name} onChange={(e) => setFirstName(e.target.value)}/>
+                 <div className="cut"></div>
+                <label htmlFor="firstname" className="placeholder">First name</label>
+            </div>
+            <div className="input-container ic2">
+            <input id="lastname" className="input" type="text" placeholder=" " value={last_name} onChange={(e) => setLastName(e.target.value)} />
+                <div className="cut"></div>
+                <label htmlFor="lastname" className="placeholder">Last name</label>
+            </div>
+            <div className="input-container ic2">
+                <input id="phonenumber" className="input" type="text" placeholder=" " value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)}/>
+                <div className="cut cut-short"></div>
+                <label htmlFor="phonenumber" className="placeholder">Phone Number</label>
+            </div>
+            <div className="input-container ic2">
+                <input id="email" className="input" type="text" placeholder=" " value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <div className="cut cut-short"></div>
+                <label htmlFor="email" className="placeholder">Email</label>
+            </div>
+            <div className="input-container ic2">
+                <input id="username" className="input" type="text" placeholder=" " value={username} onChange={(e) => setUsername(e.target.value)}/>
+                <div className="cut cut-short"></div>
+                <label htmlFor="username" className="placeholder">Username</label>
+            </div>
+                <div className="input-container ic2">
+                 <input id="password" className="input" type="text" placeholder=" " value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <div className="cut cut-short"></div>
+                <label htmlFor="password" className="placeholder">Password</label>
+            </div>
             <button type="submit" className="submit">Sign Up</button>
-        </form>
-
+         </form>
+        </div>
     );
-}
+};
 
 export default SignUp;
