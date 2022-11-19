@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create, :show, :destroy]
  
 
-  # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 
 end

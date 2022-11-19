@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Home({ currentUser, setCurrentUser }) {
 
+    const navigate = useNavigate()
 
     function handleLogOut() {
+        navigate('/')
         fetch('/logout',{method: "DELETE"}).then((r) => {
             if(r.ok){
                 setCurrentUser(null)

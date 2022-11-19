@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     wrap_parameters format: []
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid_response
-    skip_before_action :authorized, only: :create
+    skip_before_action :authorized, only: [:create, :index]
 
     def index
         users = User.all

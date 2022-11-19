@@ -45,23 +45,6 @@ function SignUp({setUser}) {
 
          <form className="signup-form" onSubmit={handleSignUp}>
              <div className="title">Sign Up</div>
-            {/* <p>Username</p>
-            <input class="input-container ic1" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-            <p>Password</p>
-            <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <p>First Name</p>
-            <input type="text"value={first_name} onChange={(e) => setFirstName(e.target.value)}/>
-            <p>Last Name</p>
-            <input type="text"value={last_name} onChange={(e) => setLastName(e.target.value)}/>
-            <p>Phone Number</p>
-            <input type="text"value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)}/>
-            <p>Email</p>
-            <input type="text"value={email} onChange={(e) => setEmail(e.target.value)}/>
-            <br /> */}
-
-  
-   
-
       <div className="input-container ic1">
         <input id="firstname" className="input" type="text" placeholder=" " value={first_name} onChange={(e) => setFirstName(e.target.value)}/>
         <div className="cut"></div>
