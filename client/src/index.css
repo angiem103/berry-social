@@ -173,3 +173,13 @@
   padding-top: 15px;
   text-align: center;
 }
+
+.homepage-title {
+  position:fixed;
+  width: 100%;
+  height: 70px;
+  background: rgba(200, 153, 168, 0.598);
+  font-size: 1em;
+  padding-top: 10px;
+  align-items: center;
+}
