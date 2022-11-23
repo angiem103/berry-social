@@ -7,10 +7,10 @@
   .sidebar {
     position: fixed;
     width: 20%;
-    height: 90vh;
+    height: 100vh;
     background: rgba(238, 99, 143, 0.598);
     font-size: .70em;
-    margin-top: 80px;
+    display:block;
   }
   
   .nav {
@@ -20,6 +20,8 @@
     top: 40%;
     transform: translateY(-50%);
     font-weight: bold;
+    display: block;
+
   }
   
   .nav ul {
@@ -31,7 +33,7 @@
       margin: 3.2em 0;
     }
       
-      /* a {
+      a {
         line-height: 5em;
         text-transform: uppercase;
         text-decoration: none;
@@ -40,7 +42,7 @@
         transition: all ease-out 300ms;
         color:white;
         
-      } */ 
+      } 
       /* this makes text white and uppercase and cute */
       
       &.active a {

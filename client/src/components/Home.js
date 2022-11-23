@@ -6,26 +6,11 @@ import "../index.css";
 
 function Home({ currentUser, setCurrentUser }) {
 
-    const navigate = useNavigate()
-
-    function handleLogOut() {
-        navigate('/')
-        fetch('/logout',{method: "DELETE"}).then((r) => {
-            if(r.ok){
-                setCurrentUser(null)
-            }
-        })
-    };
-
     return (
 
 
         <div>
-            <div className='homepage-title'>
-            <h1>Hi {currentUser.first_name}</h1>
-            <button onClick={handleLogOut}>Logout</button>
-            </div>
-            <NavBar />
+            <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
             <Display />
         </div>
 

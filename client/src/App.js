@@ -18,9 +18,6 @@ function App() {
     })
   }, [])
 
-
-  // if(!currentUser) return <Login onLogin={handleLogin}/>
-
   function handleLogin(user) {
     setCurrentUser(user)
   }
@@ -36,6 +33,7 @@ function App() {
         <Route path="/" element={<Login onLogin={handleLogin}/>} />
         <Route path="/signup" element={<SignUp setUser={handleSetUser}/>} />
       </Routes>
+
     </div>
   );
 }
