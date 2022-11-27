@@ -1,7 +1,7 @@
 import React from 'react';
-import "../Display.css";
+import "../Container.css";
 
-function Display () {
+function Events () {
 
     return (
         <section className="twitter">
@@ -14,4 +14,4 @@ function Display () {
 
 }
 
-export default Display;
+export default Events;

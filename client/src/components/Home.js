@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar';
-import Display from './Display';
+import Events from './Events';
 import "../index.css";
 
 function Home({ currentUser, setCurrentUser }) {
@@ -11,7 +11,7 @@ function Home({ currentUser, setCurrentUser }) {
 
         <div>
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-            <Display />
+            <Events />
         </div>
 
 

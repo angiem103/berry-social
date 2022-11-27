@@ -18,6 +18,7 @@ function App() {
     })
   }, [])
 
+
   function handleLogin(user) {
     setCurrentUser(user)
   }
