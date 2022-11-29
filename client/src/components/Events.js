@@ -21,7 +21,7 @@ function Events () {
 
     return (
         <section className="twitter">
-        <p className="header">Upcoming Events</p>
+        <h1 className="header">Upcoming Events</h1>
         <div className="container">
           {renderEvents}
         </div>

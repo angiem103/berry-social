@@ -13,12 +13,12 @@
       height: 100%;
       font-family: Arial;
       font-size: 16px;
-      background:pink;
+      background-image: url("https://img.freepik.com/premium-photo/fresh-juicy-strawberries-fruits-pink-background-fruit-background-top-view-flat-lay-abstract-strawberry_4740-3722.jpg?w=2000");
       padding-bottom:120px;
   }
 
   .card {
-    background-color:rgba(238, 99, 143, 0.598);
+    background-color:rgba(238, 99, 143, 0.83);
     border-radius: 20px;
     box-sizing: border-box;
     height: 300px;
@@ -27,6 +27,7 @@
     position:relative;
     margin-top: 50px;
     margin-left: 30px;
+    text-overflow: ellipsis;
   }
 
   .title {
@@ -42,6 +43,24 @@
 
   .header {
     color: pink;
+    text-transform: uppercase;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: sans-serif;
+    font-weight: light;
   }
   
+  p {
+
+    color: #eee;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-top: 10px;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    font-weight: lighter;
+  }
 
