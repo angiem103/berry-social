@@ -7,10 +7,9 @@
   .sidebar {
     position: fixed;
     width: 20%;
-    height: 100vh;
+    height: 100%;
     background: rgba(238, 99, 143, 0.598);
     font-size: .70em;
-    display:block;
   }
   
   .nav {
@@ -41,45 +40,12 @@
         display: block;
         transition: all ease-out 300ms;
         color:white;
+        position: relative;
         
       } 
-      /* this makes text white and uppercase and cute */
-      
-      &.active a {
-        color: white;
-      }
-      
-      &:not(.active)::after {
-        opacity: 0.2;
-      }
-      
-      &:not(.active):hover a {
-        color: rgba(#FFF, 0.75);
-      }
-      
-      &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 0.2em;
-        background: black;
-        left: 0;
-        bottom: 0;
-        background-image: linear-gradient(to right, #209462, #b74e91)
-      }
-    
-  
-  
 
-    
-    a {
-      position: relative;
-    }
       
-      img {
-        width: 48px;
-        height: 48px;
-      }
+
     
     
     p {
@@ -91,6 +57,3 @@
       margin-top: 20px;
     }
   
-.description:hover {
-    color:red;
-}

@@ -1,7 +1,6 @@
 import React from "react";
 import EventCard from "./EventCard";
 import { useState, useEffect } from "react";
-import { useRevalidator } from "react-router-dom";
 import "../Container.css";
 
 function Events () {
@@ -22,8 +21,8 @@ function Events () {
 
     return (
         <section className="twitter">
+        <p className="header">Upcoming Events</p>
         <div className="container">
-          <p>Upcoming Events</p>
           {renderEvents}
         </div>
       </section>
