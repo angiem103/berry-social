@@ -18,7 +18,7 @@
   }
 
   .card {
-    background-color:rgba(238, 99, 143, 0.83);
+    background-color:rgb(238, 99, 143);
     border-radius: 20px;
     box-sizing: border-box;
     height: 300px;
@@ -42,14 +42,14 @@
   }
 
   .header {
-    color: pink;
+    color: rgb(234, 136, 167);
     text-transform: uppercase;
     text-align: center;
     justify-content: center;
     padding-top: 10px;
     padding-bottom: 10px;
     font-family: sans-serif;
-    font-weight: light;
+    font-weight:400;
   }
   
   p {

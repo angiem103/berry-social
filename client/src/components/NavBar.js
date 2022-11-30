@@ -21,9 +21,9 @@ return (
   <aside className="sidebar">
     <p>Hello {currentUser.first_name}</p>
     <nav className="nav">
-        <NavLink>Events</NavLink>
-        <NavLink>Vendors</NavLink>
-        <NavLink>Clients</NavLink>
+        <button className="nav-button">Events</button>
+        <button className="nav-button">Vendors</button>
+        <button className="nav-button">Clients</button>
         <button onClick={handleLogOut}>Logout</button>
     </nav>
 

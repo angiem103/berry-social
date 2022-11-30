@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :vendors
   resources :clients
   resources :events
   # Routing logic: fallback requests for React Router.
