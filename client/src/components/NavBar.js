@@ -1,9 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "../NavBar.css";
 import { useNavigate } from 'react-router-dom';
 
-function NavBar( {currentUser, setCurrentUser} ) {
+function NavBar( {currentUser, setCurrentUser, setActive } ) {
 
     const navigate = useNavigate()
 
@@ -21,8 +20,8 @@ return (
   <aside className="sidebar">
     <p>Hello {currentUser.first_name}</p>
     <nav className="nav">
-        <button className="nav-button">Events</button>
-        <button className="nav-button">Vendors</button>
+        <button className="nav-button" onClick={() => setActive("Events")}>Events</button>
+        <button className="nav-button" onClick={() => setActive("Vendors")}>Vendors</button>
         <button className="nav-button">Clients</button>
         <button onClick={handleLogOut}>Logout</button>
     </nav>

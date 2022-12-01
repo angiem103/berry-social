@@ -4,6 +4,9 @@
     float: right;
     height: 100%;
     margin-left: 20%;
+    background-image: url("https://img.freepik.com/premium-photo/fresh-juicy-strawberries-fruits-pink-background-fruit-background-top-view-flat-lay-abstract-strawberry_4740-3722.jpg?w=2000");
+    background-size: cover;
+    position:fixed;
   }
     
  .container {
@@ -13,12 +16,11 @@
       height: 100%;
       font-family: Arial;
       font-size: 16px;
-      background-image: url("https://img.freepik.com/premium-photo/fresh-juicy-strawberries-fruits-pink-background-fruit-background-top-view-flat-lay-abstract-strawberry_4740-3722.jpg?w=2000");
       padding-bottom:120px;
   }
 
   .card {
-    background-color:rgb(238, 99, 143);
+    background-color:rgba(238, 99, 143, 0.922);
     border-radius: 20px;
     box-sizing: border-box;
     height: 300px;
@@ -50,6 +52,8 @@
     padding-bottom: 10px;
     font-family: sans-serif;
     font-weight:400;
+    background-color: white;
+    letter-spacing: 0.1em;
   }
   
   p {

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :vendors
-  resources :clients
-  resources :events
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
 
@@ -16,6 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create, :show, :destroy]
 
   resources :events
+  resources :vendors
+  resources :clients
  
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
