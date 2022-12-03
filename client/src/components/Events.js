@@ -3,7 +3,7 @@ import EventCard from "./EventCard";
 import { useState, useEffect } from "react";
 import "../Container.css";
 
-function Events ( ) {
+function Events ( { currentUser } ) {
 
   const [events, setEvents] = useState ([])
 

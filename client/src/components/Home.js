@@ -13,7 +13,7 @@ function Home({ currentUser, setCurrentUser }) {
 
         <div>
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} setActive = {setActive}/>
-            {active === "Events" && <Events />}
+            {active === "Events" && <Events currentUser={currentUser} />}
             {active === "Vendors" && <Vendors />}
         </div>
 

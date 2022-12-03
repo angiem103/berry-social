@@ -3,6 +3,8 @@ class User < ApplicationRecord
     validates :username, uniqueness: true, presence: true, length: { minimum: 6 }
     validates :first_name, :last_name, :phone_number, :email, presence: true
 
+    has_many :clients
     has_many :events
+    has_many :vendors
 
 end
