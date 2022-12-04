@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
-import EditEvent from "./components/EventEdit";
+import EditEvent from "./components/EditEvent";
 
 function App() {
 
@@ -18,8 +18,6 @@ function App() {
       }
     })
   }, [])
-
-  console.log(currentUser)
 
   function handleLogin(user) {
     setCurrentUser(user)
@@ -35,7 +33,7 @@ function App() {
         <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path="/" element={<Login onLogin={handleLogin}/>} />
         <Route path="/signup" element={<SignUp setUser={handleSetUser}/>} />
-        <Route path="/editevent/:id" element={<EditEvent />} />
+        <Route path="/events/:id" element={<EditEvent currentUser={currentUser} />} />
       </Routes>
 
     </div>

@@ -11,9 +11,9 @@ function EventCard( { event }) {
             <p>{event.start_date}</p>
             <p>Location: {event.location}</p>
             <p>{event.description}</p>
-            <Link to={`/eventedit/${event.id}`}>
-                <button variant="primary" id='edit-button' >Edit</button >
-            </Link>
+            <Link to={`/events/${event.id}`}>
+                <button id='edit-button' >Edit</button >
+            </ Link>
       </div>
     )
 

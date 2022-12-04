@@ -12,8 +12,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :create, :show, :destroy]
 
-  resources :events, only: [:index, :show, :create,]
-  patch "/editevent/:id", to: "events#update"
+  resources :events
   resources :vendors
   resources :clients
  
