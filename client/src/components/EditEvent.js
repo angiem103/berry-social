@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../index.css"
 
 
@@ -16,25 +16,20 @@ function EditEvent ( {currentUser} ) {
     const [endDate, setEndDate] = useState('');
     const [endTime, setEndTime] = useState('');
 
-    const navigate = useNavigate()
-
-    console.log(currentUser)
-
-
   return (
 
         <div className='signup-background'>
          <form className="signup-form" >
              <div className="title">Edit Event</div>
              <div className="input-container ic1">
-                <input id="firstname" className="input" type="text" placeholder=" " value={name} onChange={(e) => setName(e.target.value)}/>
+                <input id="name" className="input" type="text" placeholder=" " value={name} onChange={(e) => setName(e.target.value)}/>
                  <div className="cut"></div>
-                <label htmlFor="firstname" className="placeholder">First name</label>
+                <label className="placeholder">First name</label>
             </div>
             <div className="input-container ic2">
-            <input id="description" className="input" type="text"  value={description} onChange={(e) => setDescription(e.target.value)} />
+                <input id="desc" className="input" type="text" placeholder=" " value={description} onChange={(e) => setDescription(e.target.value)} />
                 <div className="cut"></div>
-                <label htmlFor="description" className="placeholder">Description</label>
+                <label htmlFor="lastname" className="placeholder">Description</label>
             </div>
             <div className="input-container ic2">
                 <input id="location" className="input" type="text" value={location} onChange={(e) => setLocation(e.target.value)}/>
@@ -51,12 +46,15 @@ function EditEvent ( {currentUser} ) {
                 <div className="cut cut-short"></div>
                 <label htmlFor="start-date" className="placeholder">Start Date</label>
             </div>
-                <div className="input-container ic2">
+            <div className="input-container ic2">
                  <input id="start-time" className="input" type="text" value={startTime} onChange={(e) => setStartTime(e.target.value)}/>
                 <div className="cut cut-short"></div>
                 <label htmlFor="start-time" className="placeholder">Start-Time</label>
             </div>
             <button type="submit" className="submit">Edit</button>
+            <Link to={"/home"}>
+                <button id='submit'>Cancel</button >
+            </ Link>
          </form>
         </div>
         

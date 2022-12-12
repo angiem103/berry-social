@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: users, include: :clients
+        render json: users, include: ['clients', 'clients.events']
     end
 
     def create
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     def show
         user = User.find(session[:user_id])
         if user
-            render json: user
+            render json: user, include: [ 'clients', 'clients.events']
         else
             render json: { error: "Not authorized" }, status: :unauthorized
         end

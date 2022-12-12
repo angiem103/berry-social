@@ -1,23 +1,17 @@
 import React from "react";
 import EventCard from "./EventCard";
-import { useState, useEffect } from "react";
 import "../Container.css";
 
 function Events ( { currentUser } ) {
 
-  const [events, setEvents] = useState ([])
-
-  useEffect(() => {
-    fetch("/events")
-    .then(r => r.json())
-    .then(setEvents)
-  }, [])
-
-  const renderEvents = events.map((event) => (
-    <div key={event.id}>
-      <EventCard event = {event} />
+  const renderEvents = currentUser.clients ? currentUser.clients.map((client) => (
+    
+    <div key={client.id}>
+      <EventCard client = {client} />
     </div>
-  ));
+  
+  ) ): undefined
+
 
     return (
         <section className="twitter">
