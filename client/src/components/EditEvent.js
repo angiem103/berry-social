@@ -1,10 +1,15 @@
 import React from 'react'
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../index.css"
 
 
-function EditEvent ( {currentUser} ) {
+function EditEvent ( { events } ) {
+
+    const params = useParams();
+    const event = events.find((event) => event.id == params.id)
+   
+
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -16,21 +21,22 @@ function EditEvent ( {currentUser} ) {
     const [endDate, setEndDate] = useState('');
     const [endTime, setEndTime] = useState('');
 
-  return (
+  return event ? (
 
         <div className='signup-background'>
          <form className="signup-form" >
              <div className="title">Edit Event</div>
-             <div className="input-container ic1">
-                <input id="name" className="input" type="text" placeholder=" " value={name} onChange={(e) => setName(e.target.value)}/>
-                 <div className="cut"></div>
-                <label className="placeholder">First name</label>
+             <div className="input-container ic2">
+                <input id="name" className="input" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                <div className="cut cut-short"></div>
+                <label htmlFor="location" className="placeholder">Name</label>
             </div>
             <div className="input-container ic2">
-                <input id="desc" className="input" type="text" placeholder=" " value={description} onChange={(e) => setDescription(e.target.value)} />
-                <div className="cut"></div>
-                <label htmlFor="lastname" className="placeholder">Description</label>
+                <input id="desc" className="input" type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                <div className="cut cut-short"></div>
+                <label htmlFor="location" className="placeholder">Description</label>
             </div>
+
             <div className="input-container ic2">
                 <input id="location" className="input" type="text" value={location} onChange={(e) => setLocation(e.target.value)}/>
                 <div className="cut cut-short"></div>
@@ -58,7 +64,7 @@ function EditEvent ( {currentUser} ) {
          </form>
         </div>
         
-    );
+    ) : null
 };
 
 export default EditEvent;

@@ -125,14 +125,17 @@
 .input:not(:placeholder-shown) ~ .placeholder {
   transform: translateY(-30px) translateX(10px) scale(0.75);
 }
-
+/* 
 .input:not(:placeholder-shown) ~ .placeholder {
   color: #808097;
-}
+} */
 
 .input:focus ~ .placeholder {
   color: #dc2f55;
 }
+
+
+
 
 .submit {
   background-color: rgba(238, 99, 143, 0.814);

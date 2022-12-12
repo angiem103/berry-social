@@ -4,10 +4,9 @@ import "../Container.css";
 
 function EventCard( { client }) {
     
-    
-    return  client ? client.events.map(event => (
 
-        <div className='card' key={event.id}>
+    return  client ? client.events.map(event => (
+       ( <div className='card' key={event.id}>
         <h1 className='title'>{event.name}</h1>
             <p>Client: {client.name}</p>
             <p>{event.start_date}</p>
@@ -16,7 +15,7 @@ function EventCard( { client }) {
             <Link to={`/events/${event.id}`}>
                 <button id='edit-button' >Edit</button >
             </ Link>
-      </div>
+      </div>) 
     )
    
    ) : undefined

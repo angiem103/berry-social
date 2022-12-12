@@ -2,13 +2,13 @@ import React from "react";
 import EventCard from "./EventCard";
 import "../Container.css";
 
-function Events ( { currentUser } ) {
+function Events ( { clients } ) {
 
-  const renderEvents = currentUser.clients ? currentUser.clients.map((client) => (
-    
+  const renderEvents = clients ? clients.map((client) => (
+    client ? (
     <div key={client.id}>
       <EventCard client = {client} />
-    </div>
+    </div>) : undefined
   
   ) ): undefined
 
