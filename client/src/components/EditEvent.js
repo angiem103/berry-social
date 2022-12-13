@@ -10,7 +10,6 @@ function EditEvent ( { events } ) {
     const event = events.find((event) => event.id == params.id)
    
 
-
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
@@ -21,41 +20,72 @@ function EditEvent ( { events } ) {
     const [endDate, setEndDate] = useState('');
     const [endTime, setEndTime] = useState('');
 
+    function getTime(eventTime) {
+
+        const time = eventTime.split('T')[1];
+        const hour = time.split(':')[0];
+        const minutes = time.split(':')[1];
+        let timeValue = '';
+        if (hour > 0 && hour <= 12) {
+            timeValue= "" + hour
+          } else if (hour > 12) {
+            timeValue= "" + (hour - 12);
+          } else if (hour == 0) {
+            timeValue= "12"
+          }
+
+        const standardTime = timeValue + ':' + minutes;
+        const dayNight =  timeValue = (hour >= 12) ? " P.M." : " A.M.";
+
+        return standardTime + dayNight;
+
+    }
+
+
+    console.log(name)
+
+
   return event ? (
 
-        <div className='signup-background'>
-         <form className="signup-form" >
-             <div className="title">Edit Event</div>
-             <div className="input-container ic2">
-                <input id="name" className="input" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                <div className="cut cut-short"></div>
-                <label htmlFor="location" className="placeholder">Name</label>
-            </div>
-            <div className="input-container ic2">
-                <input id="desc" className="input" type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
-                <div className="cut cut-short"></div>
-                <label htmlFor="location" className="placeholder">Description</label>
+        <div className='edit-background'>
+         <form className="edit-form" >
+             <div className="edit-title">Edit Event</div>
+             <div className="input-container ic0">
+                <input id="name" className="input" type="text"  defaultValue={event.name} onChange={(e) => setName(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Name</label>
             </div>
 
-            <div className="input-container ic2">
-                <input id="location" className="input" type="text" value={location} onChange={(e) => setLocation(e.target.value)}/>
-                <div className="cut cut-short"></div>
-                <label htmlFor="location" className="placeholder">Location</label>
+            <div className="input-container ic0">
+                <input id="location" className="input" type="text" defaultValue={event.location} onChange={(e) => setLocation(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Location</label>
             </div>
-            <div className="input-container ic2">
-                <input id="current-cost" className="input" type="text"  value={currentCost} onChange={(e) => setCurrentCost(e.target.value)}/>
-                <div className="cut cut-short"></div>
-                <label htmlFor="currentCost" className="placeholder">Current Cost</label>
+            <div className="input-container ic0">
+                <input id="current-cost" className="input" type="integer"  defaultValue={event.current_cost} onChange={(e) => setCurrentCost(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Current Cost</label>
             </div>
-            <div className="input-container ic2">
-                <input id="start-date" className="input" type="text"  value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
-                <div className="cut cut-short"></div>
-                <label htmlFor="start-date" className="placeholder">Start Date</label>
+            <div className="input-container ic0">
+                <input id="start-date" className="input" type="text" defaultValue={event.start_date} onChange={(e) => setStartDate(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Start Date</label>
             </div>
-            <div className="input-container ic2">
-                 <input id="start-time" className="input" type="text" value={startTime} onChange={(e) => setStartTime(e.target.value)}/>
-                <div className="cut cut-short"></div>
-                <label htmlFor="start-time" className="placeholder">Start-Time</label>
+            <div className="input-container ic0">
+                 <input id="start-time" className="input" type="text" defaultValue={getTime(event.start_time)} onChange={(e) => setStartTime(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Start Time</label>
+            </div>
+            <div className="input-container ic0">
+                <input id="end-date" className="input" type="text" defaultValue={event.end_date} onChange={(e) => setEndDate(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">End Date</label>
+            </div>
+            <div className="input-container ic0">
+                 <input id="end-time" className="input" type="text" defaultValue={getTime(event.end_time)} onChange={(e) => setEndTime(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">End Time</label>
+            </div>
+            <div className="input-container ic0">
+                <input id="desc" className="input" type="text" defaultValue={event.description} onChange={(e) => setDescription(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Description</label>
+            </div>
+            <div className="input-container ic0">
+                <input id="budget" className="input" type="text" defaultValue={event.budget} onChange={(e) => setBudget(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Budget</label>
             </div>
             <button type="submit" className="submit">Edit</button>
             <Link to={"/home"}>
