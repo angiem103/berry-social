@@ -54,14 +54,9 @@ function EditEvent ( { events } ) {
                 <input id="name" className="input" type="text"  defaultValue={event.name} onChange={(e) => setName(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Name</label>
             </div>
-
             <div className="input-container ic0">
-                <input id="location" className="input" type="text" defaultValue={event.location} onChange={(e) => setLocation(e.target.value)}/>
-                <label className="edit-cut edit-cut-short">Location</label>
-            </div>
-            <div className="input-container ic0">
-                <input id="current-cost" className="input" type="integer"  defaultValue={event.current_cost} onChange={(e) => setCurrentCost(e.target.value)}/>
-                <label className="edit-cut edit-cut-short">Current Cost</label>
+                <input id="desc" className="input" type="text" defaultValue={event.description} onChange={(e) => setDescription(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Description</label>
             </div>
             <div className="input-container ic0">
                 <input id="start-date" className="input" type="text" defaultValue={event.start_date} onChange={(e) => setStartDate(e.target.value)}/>
@@ -80,12 +75,16 @@ function EditEvent ( { events } ) {
                 <label className="edit-cut edit-cut-short">End Time</label>
             </div>
             <div className="input-container ic0">
-                <input id="desc" className="input" type="text" defaultValue={event.description} onChange={(e) => setDescription(e.target.value)}/>
-                <label className="edit-cut edit-cut-short">Description</label>
+                <input id="location" className="input" type="text" defaultValue={event.location} onChange={(e) => setLocation(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Location</label>
             </div>
             <div className="input-container ic0">
                 <input id="budget" className="input" type="text" defaultValue={event.budget} onChange={(e) => setBudget(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Budget</label>
+            </div>
+            <div className="input-container ic0">
+                <input id="current-cost" className="input" type="integer"  defaultValue={event.current_cost} onChange={(e) => setCurrentCost(e.target.value)}/>
+                <label className="edit-cut edit-cut-short">Current Cost</label>
             </div>
             <button type="submit" className="submit">Edit</button>
             <Link to={"/home"}>

@@ -216,11 +216,10 @@
 .edit-form {
   background-color: rgba(238, 99, 143, 0.598);
   border-radius: 20px;
-  box-sizing: border-box;
-  max-height: fit-content;
   padding: 20px;
   width: 900px;
-  margin-top: 200px;
+  height: fit-content;
+  margin-top: 300px;
 }
 
 .edit-background {
