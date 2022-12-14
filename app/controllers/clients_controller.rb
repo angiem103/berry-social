@@ -1,7 +1,8 @@
 class ClientsController < ApplicationController
 
     def index
-        clients = Client.all
+        user = User.find_by(id: session[:user_id])
+        clients = Client.all.select{|c| c.user_id == user.id}
         render json: clients
     end
 

@@ -25,12 +25,26 @@ class EventsController < ApplicationController
         end
     end
 
+    def create
+        event = Event.create(event_params)
+        render json: event, status: :created
+    end
+
+    def destroy
+        event = Event.find_by(id: params[:id])
+        if event
+            event.destroy
+            head :no_content
+        else
+            render json: {error: "Event Not Found"}, status: :not_found
+        end
+    end
 
 
     private
 
     def event_params
-        params.permit(:name,:description, :location, :budget, :current_cost, :start_date, :end_date, :end_time, :start_time)
+        params.permit(:name,:description, :location, :budget, :current_cost, :start_date, :end_date, :end_time, :start_time, :client_id)
     end
 
 end

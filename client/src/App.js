@@ -5,13 +5,14 @@ import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import EditEvent from "./components/EditEvent";
-import Events from "./components/Events";
+import NewEvent from "./components/NewEvent";
+
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState("");
-  const [clients, setClients] = useState([]);
   const [events, setEvents] = useState([])
+  const [clients, setClients] = useState([])
   
   useEffect(() => {
     fetch('/auth')
@@ -36,6 +37,8 @@ function App() {
     })
   }, [])
 
+
+
   function handleLogin(user) {
     setCurrentUser(user)
   }
@@ -44,13 +47,24 @@ function App() {
     setCurrentUser(user)
   }
 
+  function handleEditEvent(editedEvent) {
+    const unchangedEvents = events.filter(event => event.id !== editedEvent.id)
+    setEvents([unchangedEvents,editedEvent])
+  }
+
+  function handleDeleteEvent(deletedEvent){
+    const updatedEvents = events.filter((event) => event.id !== deletedEvent.id)
+    setEvents(updatedEvents)
+  }
+
   return (
     <div className="App">
       <Routes>
-        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} clients={clients}/>} />
+        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent}/>} />
         <Route path="/" element={<Login onLogin={handleLogin}/>} />
         <Route path="/signup" element={<SignUp setUser={handleSetUser}/>} />
-        <Route path="/events/:id" element={<EditEvent events={events} />} />
+        <Route path="/events/:id" element={<EditEvent events={events} clients={clients} onEditEvent={handleEditEvent} />} />
+        <Route path="/newevent" element={<NewEvent events={events} clients={clients}/>} />
       </Routes>
 
     </div>

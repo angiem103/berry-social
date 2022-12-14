@@ -8,6 +8,8 @@
     background-size: cover;
     position:fixed;
   }
+
+  
     
  .container {
       display:grid;
@@ -82,3 +84,19 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
+
+
+  #delete-button {
+    background-color: rgba(238, 99, 143, 0.814);
+    border-radius: 12px;
+    border: 0; 
+    color: #eee;
+    cursor: pointer;
+    font-size: 12px;
+    outline: 0;
+    position: absolute;
+    bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+

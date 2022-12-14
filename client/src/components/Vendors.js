@@ -13,7 +13,6 @@ function Vendors ( ) {
     .then(setVendors)
   }, [])
 
-  console.log(vendors)
   const renderVendors = vendors.map((vendor) => (
     <div key={vendor.id}>
       <VendorCard vendor = {vendor} />

@@ -3,8 +3,9 @@ import NavBar from './NavBar';
 import Events from './Events';
 import Vendors from './Vendors';
 import { useState } from "react"
+import NewEvent from './NewEvent';
 
-function Home({ currentUser, setCurrentUser, clients}) {
+function Home({ currentUser, setCurrentUser, events, clients, onEventDelete }) {
 
     const [active, setActive] = useState('Events')
 
@@ -13,8 +14,9 @@ function Home({ currentUser, setCurrentUser, clients}) {
 
         <div>
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} setActive = {setActive}/>
-            {active === "Events" && <Events clients={clients}/>}
+            {active === "Events" && <Events events={events} clients={clients} onEventDelete={onEventDelete} />}
             {active === "Vendors" && <Vendors />}
+            {active === "NewEvent" && <NewEvent />}
         </div>
 
 

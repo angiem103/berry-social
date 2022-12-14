@@ -2,12 +2,12 @@ import React from "react";
 import EventCard from "./EventCard";
 import "../Container.css";
 
-function Events ( { clients } ) {
+function Events ( { events, clients, onEventDelete } ) {
 
-  const renderEvents = clients ? clients.map((client) => (
-    client ? (
-    <div key={client.id}>
-      <EventCard client = {client} />
+  const renderEvents = events ? events.map((event) => (
+    event ? (
+    <div key={event.id}>
+      <EventCard event={event} clients={clients} onEventDelete={onEventDelete}/>
     </div>) : undefined
   
   ) ): undefined

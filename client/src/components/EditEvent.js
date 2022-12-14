@@ -1,24 +1,26 @@
 import React from 'react'
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams} from "react-router-dom";
 import "../index.css"
 
 
-function EditEvent ( { events } ) {
+function EditEvent ( { events, onEditEvent, clients } ) {
+
 
     const params = useParams();
-    const event = events.find((event) => event.id == params.id)
+    const event = events.find((event) => event.id == params.id) 
+    const navigate = useNavigate();
    
-
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [location, setLocation] = useState('');
-    const [budget, setBudget] = useState('');
-    const [currentCost, setCurrentCost] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [startTime, setStartTime] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [endTime, setEndTime] = useState('');
+    const [name, setName] = useState(event.name);
+    const [description, setDescription] = useState(event.description);
+    const [location, setLocation] = useState(event.location);
+    const [budget, setBudget] = useState(event.budget);
+    const [currentCost, setCurrentCost] = useState(event.current_cost);
+    const [startDate, setStartDate] = useState(event.start_date);
+    const [startTime, setStartTime] = useState(event.start_time);
+    const [endDate, setEndDate] = useState(event.end_date);
+    const [endTime, setEndTime] = useState(event.end_time);
+    const [selectedClient, setSelectedClient] = useState('')
 
     function getTime(eventTime) {
 
@@ -41,51 +43,96 @@ function EditEvent ( { events } ) {
 
     }
 
+    function handleClientChange(e) {
+        setSelectedClient(e.target.value)
+   }
 
-    console.log(name)
+    function handleSubmitChanges(e) {
+        e.preventDefault()
+
+        const client = clients.find((client) => client.name == selectedClient)
+        console.log(client)
+
+        const editedEvent = {
+            name: name,
+            description: description,
+            start_date: startDate,
+            start_time: startTime,
+            end_date: endDate,
+            end_time: endTime,
+            locaiton: location,
+            budget: budget,
+            current_cost: currentCost,
+            id: event.id,
+            client_id: client.id,
+        }
+
+
+        fetch(`/events/${editedEvent.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(editedEvent)
+        })
+        .then(r => r.json())
+        .then(editedEvent => {
+            onEditEvent(editedEvent)
+            navigate("/home")
+        })
+        
+
+    }
+
 
 
   return event ? (
 
         <div className='edit-background'>
-         <form className="edit-form" >
+         <form className="edit-form" onSubmit={handleSubmitChanges}>
              <div className="edit-title">Edit Event</div>
              <div className="input-container ic0">
-                <input id="name" className="input" type="text"  defaultValue={event.name} onChange={(e) => setName(e.target.value)}/>
+                <input  id="name" className="input" type="text"  defaultValue={name}  onChange={(e) => setName(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Name</label>
             </div>
             <div className="input-container ic0">
-                <input id="desc" className="input" type="text" defaultValue={event.description} onChange={(e) => setDescription(e.target.value)}/>
+                <input id="desc" className="input" type="text" defaultValue={description} onChange={(e) => setDescription(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Description</label>
             </div>
             <div className="input-container ic0">
-                <input id="start-date" className="input" type="text" defaultValue={event.start_date} onChange={(e) => setStartDate(e.target.value)}/>
+                <input id="start-date" className="input" type="text" defaultValue={startDate} onChange={(e) => setStartDate(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Start Date</label>
             </div>
             <div className="input-container ic0">
-                 <input id="start-time" className="input" type="text" defaultValue={getTime(event.start_time)} onChange={(e) => setStartTime(e.target.value)}/>
+                 <input id="start-time" className="input" type="text" defaultValue={startTime}  onChange={(e) => setStartTime(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Start Time</label>
             </div>
             <div className="input-container ic0">
-                <input id="end-date" className="input" type="text" defaultValue={event.end_date} onChange={(e) => setEndDate(e.target.value)}/>
+                <input id="end-date" className="input" type="text" defaultValue={endDate} onChange={(e) => setEndDate(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">End Date</label>
             </div>
             <div className="input-container ic0">
-                 <input id="end-time" className="input" type="text" defaultValue={getTime(event.end_time)} onChange={(e) => setEndTime(e.target.value)}/>
+                 <input id="end-time" className="input" type="text" defaultValue={endTime} onChange={(e) => setEndTime(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">End Time</label>
             </div>
             <div className="input-container ic0">
-                <input id="location" className="input" type="text" defaultValue={event.location} onChange={(e) => setLocation(e.target.value)}/>
+                <input id="location" className="input" type="text" defaultValue={location} onChange={(e) => setLocation(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Location</label>
             </div>
             <div className="input-container ic0">
-                <input id="budget" className="input" type="text" defaultValue={event.budget} onChange={(e) => setBudget(e.target.value)}/>
+                <input id="budget" className="input" type="text" defaultValue={budget} onChange={(e) => setBudget(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Budget</label>
             </div>
             <div className="input-container ic0">
-                <input id="current-cost" className="input" type="integer"  defaultValue={event.current_cost} onChange={(e) => setCurrentCost(e.target.value)}/>
+                <input id="current-cost" className="input" type="integer"  defaultValue={currentCost} onChange={(e) => setCurrentCost(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Current Cost</label>
             </div>
+            <select value={selectedClient} onChange={handleClientChange}>
+                <option disabled={true} value="">
+                        Choose Client
+                </option>
+                {clients.map((client) => <option key={client.id}>{client.name}</option>)}
+            </select>
             <button type="submit" className="submit">Edit</button>
             <Link to={"/home"}>
                 <button id='submit'>Cancel</button >
