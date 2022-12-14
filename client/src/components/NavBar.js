@@ -18,7 +18,7 @@ function NavBar( {currentUser, setCurrentUser, setActive } ) {
 return (
 <main className="main">
   <aside className="sidebar">
-    <p>Hello {currentUser.first_name}</p>
+    <p className="greeting">Hello {currentUser.first_name}</p>
     <nav className="nav">
         <button className="nav-button" onClick={() => setActive("NewEvent")}>New Event</button>
         <button className="nav-button" onClick={() => setActive("Events")}>Events</button>

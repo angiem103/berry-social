@@ -16,16 +16,13 @@
     position: relative;
     margin: 0 15%;
     text-align: right;
-    top: 40%;
+    top: 33%;
     transform: translateY(-50%);
     font-weight: bold;
     display: block;
 
   }
   
-  .nav ul {
-    list-style: none;
-  }
     
     li {
       position: relative;
@@ -47,5 +44,16 @@
       } 
 .nav-button:hover {
   color: black;
+}
+
+.greeting {
+  line-height: 5em;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  display: block;
+  color:white;
+  padding-left: 25%;
+  font-size: 18px;
 }
       
