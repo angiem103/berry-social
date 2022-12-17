@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "../index.css"
 
 
 function NewEvent ( { events, clients, addEvent, currentUser, setActive } ) {
 
-        const navigate = useNavigate();
+
 
         console.log(events)
 
@@ -30,7 +30,7 @@ function NewEvent ( { events, clients, addEvent, currentUser, setActive } ) {
         function handleNewEvent(e) {
             e.preventDefault()
     
-            const client = clients.find((client) => client.id == selectedClient)
+            const client = clients.find((client) => client.id === selectedClient)
             console.log(client)
     
             const newEvent = {

@@ -16,7 +16,7 @@ function Home({ currentUser, setCurrentUser, events, clients, onEventDelete, add
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} setActive = {setActive}/>
             {active === "Events" && <Events events={events} clients={clients} onEventDelete={onEventDelete} />}
             {active === "Vendors" && <Vendors />}
-            {active === "NewEvent" && <NewEvent clients={clients} addEvent={addEvent} currentUser={currentUser} setActive={setActive}/>}
+            {active === "NewEvent" && <NewEvent clients={clients} addEvent={addEvent} currentUser={currentUser} setActive={'Events'}/>}
         </div>
 
 

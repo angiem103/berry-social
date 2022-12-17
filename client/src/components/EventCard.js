@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import "../Container.css";
 
 function EventCard( { event, onEventDelete }) {
 
+    const navigate = useNavigate();
 
     function handleEventDelete() {
         fetch(`/events/${event.id}`, {
@@ -24,7 +25,7 @@ function EventCard( { event, onEventDelete }) {
             timeValue= "" + hour
           } else if (hour > 12) {
             timeValue= "" + (hour - 12);
-          } else if (hour == 0) {
+          } else if (hour === 0) {
             timeValue= "12"
           }
 
@@ -33,6 +34,11 @@ function EventCard( { event, onEventDelete }) {
 
         return standardTime + dayNight;
 
+    }
+
+    function handleEdit(e) {
+        e.preventDefault()
+        navigate(`/events/${event.id}`)
     }
 
     return ( <div className='card' >
@@ -48,9 +54,8 @@ function EventCard( { event, onEventDelete }) {
                 {event.vendors.map((vendor) => 
                 <li key={vendor.id}>{vendor.name}</li>)}
              </ul>
-             <Link to={`/events/${event.id}`}>
-                 <button id='edit-button' >Edit</button >
-             </ Link>
+
+                 <button id='edit-button' onClick={handleEdit} >Edit</button >
              <button id='delete-button' onClick={handleEventDelete}>Delete Event</button>
        </div>) 
      

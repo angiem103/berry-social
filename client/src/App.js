@@ -1,11 +1,12 @@
 import React from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes,  Route } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import EditEvent from "./components/EditEvent";
 import NewEvent from "./components/NewEvent";
+
 
 
 function App() {
@@ -65,7 +66,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        
         <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} addEvent={handleNewEvent}/>} />
         <Route path="/" element={<Login onLogin={handleLogin}/>} />
         <Route path="/signup" element={<SignUp setUser={handleSetUser}/>} />
