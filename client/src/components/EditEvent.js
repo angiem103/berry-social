@@ -8,7 +8,7 @@ function EditEvent ( { events, onEditEvent, clients } ) {
 
 
     const params = useParams();
-    const event = events.find((event) => event.id == params.id) 
+    const event = events ? events.find((event) => event.id == params.id) : undefined
     const navigate = useNavigate();
    
     const [name, setName] = useState(event.name);
@@ -17,10 +17,10 @@ function EditEvent ( { events, onEditEvent, clients } ) {
     const [budget, setBudget] = useState(event.budget);
     const [currentCost, setCurrentCost] = useState(event.current_cost);
     const [startDate, setStartDate] = useState(event.start_date);
-    const [startTime, setStartTime] = useState(event.start_time);
+    const [startTime, setStartTime] = useState(getTime(event.start_time));
     const [endDate, setEndDate] = useState(event.end_date);
     const [endTime, setEndTime] = useState(event.end_time);
-    const [selectedClient, setSelectedClient] = useState('')
+    const [selectedClient, setSelectedClient] = useState(event.client.name)
 
     function getTime(eventTime) {
 
@@ -51,7 +51,6 @@ function EditEvent ( { events, onEditEvent, clients } ) {
         e.preventDefault()
 
         const client = clients.find((client) => client.name == selectedClient)
-        console.log(client)
 
         const editedEvent = {
             name: name,
@@ -128,7 +127,7 @@ function EditEvent ( { events, onEditEvent, clients } ) {
                 <label className="edit-cut edit-cut-short">Current Cost</label>
             </div>
             <select value={selectedClient} onChange={handleClientChange}>
-                <option disabled={true} value="">
+                <option disabled={true} value={event.client.name}>
                         Choose Client
                 </option>
                 {clients.map((client) => <option key={client.id}>{client.name}</option>)}

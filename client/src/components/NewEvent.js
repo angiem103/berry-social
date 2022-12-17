@@ -4,11 +4,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import "../index.css"
 
 
-function NewEvent ( { clients } ) {
+function NewEvent ( { events, clients, addEvent, currentUser, setActive } ) {
 
         const navigate = useNavigate();
 
-       
+        console.log(events)
+
+        console.log(clients)
         const [name, setName] = useState('');
         const [description, setDescription] = useState('');
         const [location, setLocation] = useState('');
@@ -28,33 +30,38 @@ function NewEvent ( { clients } ) {
         function handleNewEvent(e) {
             e.preventDefault()
     
-            const client = clients.find((client) => client.name == selectedClient)
+            const client = clients.find((client) => client.id == selectedClient)
             console.log(client)
     
-            const editedEvent = {
+            const newEvent = {
+                user_id: currentUser.id,
                 name: name,
                 description: description,
                 start_date: startDate,
                 start_time: startTime,
                 end_date: endDate,
                 end_time: endTime,
-                locaiton: location,
+                location: location,
                 budget: budget,
                 current_cost: currentCost,
                 client_id: client.id,
-            }
+            };
+
+            // :name,:description, :location, :budget, :current_cost, :start_date, :end_date, :end_time, :start_time, :client_id
     
     
-            fetch(`/events/${editedEvent.id}`, {
-                method: 'PATCH',
+            fetch('/events', {
+                method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'
                 },
-                body: JSON.stringify(editedEvent)
+                body: JSON.stringify(newEvent)
             })
             .then(r => r.json())
-            .then(editedEvent => {
-                navigate("/home")
+            .then(event => {
+                console.log(event, newEvent, "important")
+                addEvent(event)
+                setActive("Events")
             })
             
     
@@ -107,7 +114,7 @@ function NewEvent ( { clients } ) {
                     <option disabled={true} value="">
                             Choose Client
                     </option>
-                    {clients? clients.map((client) => <option key={client.id}>{client.name}</option>) : undefined}
+                    { clients ? clients.map((client) => <option key={client.id} value={client.id}>{client.name}</option>) : undefined}
 
                 </select>
                 <button type="submit" className="submit">Create Event</button>

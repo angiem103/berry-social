@@ -2,16 +2,9 @@ import React from "react";
 import EventCard from "./EventCard";
 import "../Container.css";
 
-function Events ( { events, clients, onEventDelete } ) {
+function Events ( { events, onEventDelete } ) {
 
-  const renderEvents = events ? events.map((event) => (
-    event ? (
-    <div key={event.id}>
-      <EventCard event={event} clients={clients} onEventDelete={onEventDelete}/>
-    </div>) : undefined
-  
-  ) ): undefined
-
+  const renderEvents = events.sort( (a,b) => a.id > b.id ? 1 : -1).map((event) => ( <EventCard key={event.id} event={event} onEventDelete={onEventDelete}/> ))
 
     return (
         <section className="twitter">

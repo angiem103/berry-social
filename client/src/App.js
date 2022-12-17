@@ -49,7 +49,8 @@ function App() {
 
   function handleEditEvent(editedEvent) {
     const unchangedEvents = events.filter(event => event.id !== editedEvent.id)
-    setEvents([unchangedEvents,editedEvent])
+    setEvents([...unchangedEvents,editedEvent])
+
   }
 
   function handleDeleteEvent(deletedEvent){
@@ -57,14 +58,19 @@ function App() {
     setEvents(updatedEvents)
   }
 
+  function handleNewEvent(newEvent) {
+    setEvents([...events,newEvent])
+  }
+
   return (
     <div className="App">
       <Routes>
-        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent}/>} />
+        
+        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} addEvent={handleNewEvent}/>} />
         <Route path="/" element={<Login onLogin={handleLogin}/>} />
         <Route path="/signup" element={<SignUp setUser={handleSetUser}/>} />
         <Route path="/events/:id" element={<EditEvent events={events} clients={clients} onEditEvent={handleEditEvent} />} />
-        <Route path="/newevent" element={<NewEvent events={events} clients={clients}/>} />
+        <Route path="/newevent" element={<NewEvent events={events} clients={clients} addEvent={handleNewEvent}/>} />
       </Routes>
 
     </div>

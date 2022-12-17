@@ -23,7 +23,7 @@ return (
         <button className="nav-button" onClick={() => setActive("NewEvent")}>New Event</button>
         <button className="nav-button" onClick={() => setActive("Events")}>Events</button>
         <button className="nav-button" onClick={() => setActive("Vendors")}>Vendors</button>
-        <button onClick={handleLogOut}>Logout</button>
+        <button className="nav-button" onClick={handleLogOut}>Logout</button>
     </nav>
 
   </aside>
