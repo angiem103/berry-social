@@ -84,6 +84,7 @@ function EditEvent ( { events, onEditEvent, clients } ) {
     }
 
 
+    console.log(selectedClient)
 
   return event ? (
 
@@ -127,9 +128,6 @@ function EditEvent ( { events, onEditEvent, clients } ) {
                 <label className="edit-cut edit-cut-short">Current Cost</label>
             </div>
             <select value={selectedClient} onChange={handleClientChange}>
-                <option disabled={true} value={event.client.name}>
-                        Choose Client
-                </option>
                 {clients.map((client) => <option key={client.id}>{client.name}</option>)}
             </select>
             <button type="submit" className="submit">Edit</button>
