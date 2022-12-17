@@ -5,26 +5,26 @@ import "../index.css"
 
 
 function EditEvent ( { events, onEditEvent, clients } ) {
+    
 
     const params = useParams();
-    console.log(params)
-    const event = events.find((event) => event.id === params.id)
-    console.log(event)
-    console.log(events)
+    const event = events.find((event) => String(event.id) === params.id)
     const navigate = useNavigate();
+
+    
 
 
    
-    const [name, setName] = useState(event.name);
-    const [description, setDescription] = useState(event.description);
-    const [location, setLocation] = useState(event.location);
-    const [budget, setBudget] = useState(event.budget);
-    const [currentCost, setCurrentCost] = useState(event.current_cost);
-    const [startDate, setStartDate] = useState(event.start_date);
-    const [startTime, setStartTime] = useState(getTime(event.start_time));
-    const [endDate, setEndDate] = useState(event.end_date);
-    const [endTime, setEndTime] = useState(event.end_time);
-    const [selectedClient, setSelectedClient] = useState(event.client.name)
+    const [name, setName] = useState(event?.name ?? "");
+    const [description, setDescription] = useState(event?.description ?? "");
+    const [location, setLocation] = useState(event?.location ?? "");
+    const [budget, setBudget] = useState(event?.budget ?? "");
+    const [currentCost, setCurrentCost] = useState(event?.current_cost ?? "");
+    const [startDate, setStartDate] = useState(event?.start_date ?? "");
+    const [startTime, setStartTime] = useState(event ? getTime(event.start_time) : "");
+    const [endDate, setEndDate] = useState(event?.end_date ?? "");
+    const [endTime, setEndTime] = useState(event ? getTime(event.end_time) : "");
+    const [selectedClient, setSelectedClient] = useState(event?.client.name ?? "")
 
     function getTime(eventTime) {
 
@@ -36,7 +36,7 @@ function EditEvent ( { events, onEditEvent, clients } ) {
             timeValue= "" + hour
           } else if (hour > 12) {
             timeValue= "" + (hour - 12);
-          } else if (hour === 0) {
+          } else if (hour == 0) {
             timeValue= "12"
           }
 
@@ -54,7 +54,7 @@ function EditEvent ( { events, onEditEvent, clients } ) {
     function handleSubmitChanges(e) {
         e.preventDefault()
 
-        const client = clients.find((client) => client.name === selectedClient)
+        const client = clients.find((client) => client.name == selectedClient)
 
         const editedEvent = {
             name: name,

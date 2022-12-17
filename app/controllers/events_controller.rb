@@ -3,7 +3,11 @@ class EventsController < ApplicationController
     def index
         user = User.find_by(id: session[:user_id])
         events = Event.all.select{|e| e.user_id == user.id}
+        if events
         render json: events
+        else
+            render json: {error: "No Events"}, status: :not_found
+        end
     end
 
     def show
