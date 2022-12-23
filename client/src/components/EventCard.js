@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import "../Container.css";
 
-function EventCard( { event, onEventDelete, vendors }) {
+function EventCard( { event, onEventDelete }) {
 
     const navigate = useNavigate();
 
@@ -54,8 +54,10 @@ function EventCard( { event, onEventDelete, vendors }) {
                 {event.vendors.map((vendor) => 
                 <li key={vendor.id}>{vendor.name}</li>)}
              </ul>
-
-                 <button id='edit-button' onClick={handleEdit} >Edit</button >
+             <p> . Budget: {event.budget}</p>
+             <p> . Current Cost: {event.current_cost}</p>
+             <button onClick={()=>navigate(`/event_vendors/${event.id}`)}>Cost Manager</button>
+            <button id='edit-button' onClick={handleEdit} >Edit</button >
              <button id='delete-button' onClick={handleEventDelete}>Delete Event</button>
        </div>) 
      

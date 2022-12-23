@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams} from "react-router-dom";
 import "../index.css"
 import SelectedVendors from './SelectedVendors';
@@ -25,6 +25,7 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
     const [endDate, setEndDate] = useState(event?.end_date ?? "");
     const [endTime, setEndTime] = useState(event ? getTime(event.end_time) : "");
     const [selectedClient, setSelectedClient] = useState(event?.client.name ?? "")
+
 
     function getTime(eventTime) {
 
@@ -147,6 +148,16 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
                 <input id="current-cost" className="input" type="integer"  defaultValue={currentCost} onChange={(e) => setCurrentCost(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Current Cost</label>
             </div>
+            <div>
+            <h2>Cost Per Vendor</h2>
+                {event.event_vendors.map((detail) => {
+                   return ( <div className="input-container ic0">
+                    <input id="vendor-cost" className="input" type="integer"  defaultValue={detail.total_cost} onChange={(e) => setCurrentCost(e.target.value)}/>
+                    <label className="edit-cut edit-cut-short">hi</label>
+                </div>)
+                })}
+            </div>
+
             <select value={selectedClient} onChange={handleClientChange}>
                 {clients.map((client) => <option key={client.id}>{client.name}</option>)}
             </select>

@@ -14,6 +14,16 @@ class EventVendorsController < ApplicationController
         render json: event, status: :created
     end
 
+
+    def show
+        event_vendor = EventVendor.find_by(id: params[:id])
+        if event_vendor
+            render json: event_vendor
+        else
+            render json: { error: "No information found" }, status: :not_found
+        end
+    end
+
     private
 
     def event_vendor_params

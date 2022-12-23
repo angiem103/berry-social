@@ -6,6 +6,7 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import EditEvent from "./components/EditEvent";
 import NewVendor from "./components/NewVendor";
+import CostManager from "./components/CostManager";
 
 
 
@@ -86,6 +87,7 @@ function App() {
         <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} setActive={setActive} active={active} addEvent={handleNewEvent} vendors={vendors}/>} />
         <Route path="/events/:id" element={<EditEvent events={events} clients={clients} vendors={vendors} onEditEvent={handleEditEvent} />} />
         <Route path="/newvendor" element={<NewVendor currentUser={currentUser} setActive={setActive}/>} />
+        <Route path="/event_vendors/:id" element={<CostManager events={events}/>} />
       </Routes>
 
     </div>
