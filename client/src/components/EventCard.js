@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import "../Container.css";
 
-function EventCard( { event, onEventDelete }) {
+function EventCard( { event, onEventDelete, vendors }) {
 
     const navigate = useNavigate();
 

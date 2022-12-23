@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :events
   resources :vendors
   resources :clients
+  resources :event_vendors
  
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

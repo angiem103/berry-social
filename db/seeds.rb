@@ -32,11 +32,11 @@ Vendor.create( name: "DJ Chuck", contact_person: "Chuck Wilde", phone_number: Fa
 Vendor.create( name: "It's A Party", contact_person: "Ana Leon", phone_number: Faker::Base.numerify('(###) ### ####'), email: Faker::Internet.free_email(name: 'Ana'), desc_of_serv: "Decoration services for parties and weddings", user_id: 1)
 Vendor.create( name: "Party Perfect", contact_person: "Lucia Salazar", phone_number: Faker::Base.numerify('(###) ### ####'), email: Faker::Internet.free_email(name: 'Lucia'), desc_of_serv: "Decoration services for parties and weddings", user_id: 2)
 
-EventVendor.create( event_id: 1, vendor_id: 4, total_cost: 1500, left_to_pay: 1000)
-EventVendor.create( event_id: 1, vendor_id: 3, total_cost: 500, left_to_pay: 400)
-EventVendor.create( event_id: 2, vendor_id: 2, total_cost: 1000, left_to_pay: 500)
-EventVendor.create( event_id: 3, vendor_id: 4, total_cost: 600 , left_to_pay: 0)
-EventVendor.create( event_id: 4, vendor_id: 3, total_cost: 3000, left_to_pay: 2000)
+EventVendor.create( event_id: 1, vendor_id: 4, total_cost: 1500)
+EventVendor.create( event_id: 1, vendor_id: 3, total_cost: 500)
+EventVendor.create( event_id: 2, vendor_id: 2, total_cost: 1000)
+EventVendor.create( event_id: 3, vendor_id: 4, total_cost: 600)
+EventVendor.create( event_id: 4, vendor_id: 3, total_cost: 3000)
 
 
 puts "Seeding data"

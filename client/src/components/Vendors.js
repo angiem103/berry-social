@@ -1,23 +1,24 @@
 import React from "react";
 import VendorCard from "./VendorCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import "../Container.css";
+import "../index.css"
 
-function Vendors ( ) {
+function Vendors ( { vendors } ) {
 
-  const [vendors, setVendors] = useState ([])
-
-  useEffect(() => {
-    fetch("/vendors")
-    .then(r => r.json())
-    .then(setVendors)
-  }, [])
+  const navigate = useNavigate();
 
   const renderVendors = vendors.map((vendor) => (
-    <div key={vendor.id}>
-      <VendorCard vendor = {vendor} />
+    <div >
+      <VendorCard key={vendor.id} vendor={vendor} />
     </div>
-  ));
+  ))
+
+  function handleNewVendor(e) {
+    e.preventDefault()
+    navigate('/newvendor')
+  }
 
     return (
         <section className="twitter">
@@ -25,6 +26,7 @@ function Vendors ( ) {
         <div className="container">
           {renderVendors}
         </div>
+        <button className="new-vendor-submit" onClick={handleNewVendor}>Add New Vendor</button>
       </section>
     )
 

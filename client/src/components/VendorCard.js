@@ -3,8 +3,10 @@ import "../Container.css";
 
 function VendorCard( { vendor }) {
 
+    console.log(vendor)
+
     return (
-        <div className='card'>
+        <div className='vendor-card'>
         <h1 className='title'>{vendor.name}</h1>
             <p>Contact: {vendor.contact_person}</p>
             <p>Phone Number:{vendor.phone_number}</p>

@@ -5,15 +5,17 @@ import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import EditEvent from "./components/EditEvent";
-import NewEvent from "./components/NewEvent";
+import NewVendor from "./components/NewVendor";
 
 
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState("");
-  const [events, setEvents] = useState([])
-  const [clients, setClients] = useState([])
+  const [events, setEvents] = useState([]);
+  const [clients, setClients] = useState([]);
+  const [vendors, setVendors] = useState ([]);
+  const [active, setActive] = useState('Events');
   
   useEffect(() => {
     fetch('/auth')
@@ -38,7 +40,12 @@ function App() {
     })
   },[])
 
-
+  useEffect(() => {
+    fetch("/vendors")
+    .then(r => r.json())
+    .then((vendors) => setVendors(vendors)
+    )
+  }, [])
 
   function handleLogin(user) {
     setCurrentUser(user)
@@ -46,24 +53,23 @@ function App() {
 
   function handleSetUser(user) {
     setCurrentUser(user)
-  }
+  };
 
   function handleEditEvent(editedEvent) {
     const unchangedEvents = events.filter(event => event.id !== editedEvent.id)
     setEvents([...unchangedEvents,editedEvent])
 
-  }
+  };
 
   function handleDeleteEvent(deletedEvent){
     const updatedEvents = events.filter((event) => event.id !== deletedEvent.id)
     setEvents([...updatedEvents])
-  }
+  };
 
   function handleNewEvent(newEvent) {
     setEvents([...events,newEvent])
-  }
+  };
 
-  console.log(events)
 
   if (!currentUser) 
   return (
@@ -77,8 +83,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} addEvent={handleNewEvent}/>} />
-        <Route path="/events/:id" element={<EditEvent events={events} clients={clients} onEditEvent={handleEditEvent} />} />
+        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} setActive={setActive} active={active} addEvent={handleNewEvent} vendors={vendors}/>} />
+        <Route path="/events/:id" element={<EditEvent events={events} clients={clients} vendors={vendors} onEditEvent={handleEditEvent} />} />
+        <Route path="/newvendor" element={<NewVendor currentUser={currentUser} setActive={setActive}/>} />
       </Routes>
 
     </div>

@@ -2,16 +2,16 @@ import React from 'react'
 import { useState } from "react";
 import { Link, useNavigate, useParams} from "react-router-dom";
 import "../index.css"
+import SelectedVendors from './SelectedVendors';
 
 
-function EditEvent ( { events, onEditEvent, clients } ) {
+function EditEvent ( { events, onEditEvent, clients, vendors } ) {
     
 
     const params = useParams();
     const event = events.find((event) => String(event.id) === params.id)
     const navigate = useNavigate();
-
-    
+    const [isChecked, setIsChecked] = useState([])
 
 
    
@@ -83,14 +83,30 @@ function EditEvent ( { events, onEditEvent, clients } ) {
             onEditEvent(editedEvent)
             navigate("/home")
         })
+
+
+        isChecked.map((vendorId) => {
+            const jointObj = {
+                event_id: event.id,
+                vendor_id: vendorId
+            }
+
+            fetch("/event_vendors" , {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify(jointObj)
+            })
+            .then(r => r.json())
+        })
         
-
     }
+        
+    
 
 
-    console.log(selectedClient)
-
-  return event ? (
+  return event && vendors ? (
 
         <div className='edit-background'>
          <form className="edit-form" onSubmit={handleSubmitChanges}>
@@ -134,6 +150,10 @@ function EditEvent ( { events, onEditEvent, clients } ) {
             <select value={selectedClient} onChange={handleClientChange}>
                 {clients.map((client) => <option key={client.id}>{client.name}</option>)}
             </select>
+            <div>
+               <SelectedVendors vendors={vendors} isChecked={isChecked} setIsChecked={setIsChecked} events={events} />
+            </div>
+
             <button type="submit" className="submit">Edit</button>
             <Link to={"/home"}>
                 <button id='submit'>Cancel</button >
