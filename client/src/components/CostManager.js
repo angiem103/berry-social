@@ -6,9 +6,9 @@ import "../Container.css";
 
 function CostManager( {events} ) {
 
-    const params = useParams()
-    const event =  events.find((event) => String(event.id) === params.id) 
-    const renderCosts = event.event_vendors.map((cost) => ( <CostCard key={cost.id}  cost={cost} event={event} /> )) 
+    const params = useParams();
+    const event =  events.find((event) => String(event.id) === params.id);
+    const renderCosts = event ? event.event_vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((cost) => ( <CostCard key={cost.id}  cost={cost} event={event} /> )) : undefined
 
     return (
         <section id="cost-background">
@@ -18,7 +18,7 @@ function CostManager( {events} ) {
                 {renderCosts}
              </div>
         </section>
-    ) 
-} 
+    );
+};
 
 export default CostManager;

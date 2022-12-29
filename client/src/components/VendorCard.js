@@ -13,7 +13,7 @@ function VendorCard( { vendor, onVendorDelete }) {
     }
 
     return (
-        <div className='vendor-card'>
+        <div className='reg-card'>
         <h1 className='card-title'>{vendor.name}</h1>
             <p>Contact: {vendor.contact_person}</p>
             <p>Phone Number:{vendor.phone_number}</p>

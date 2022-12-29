@@ -13,7 +13,7 @@ function ClientCard( { client, onClientDelete }) {
     }
 
     return (
-        <div className='vendor-card'>
+        <div className='reg-card'>
         <h1 className='card-title'>{client.name}</h1>
             <p>Phone Number:{client.phone_number}</p>
             <p>Email: {client.email}</p>

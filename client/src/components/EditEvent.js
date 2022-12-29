@@ -23,7 +23,7 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
     const [startTime, setStartTime] = useState(event ? getTime(event.start_time) : "");
     const [endDate, setEndDate] = useState(event?.end_date ?? "");
     const [endTime, setEndTime] = useState(event ? getTime(event.end_time) : "");
-    const [selectedClient, setSelectedClient] = useState(event?.client.name ?? "")
+
 
 
     function getTime(eventTime) {
@@ -36,7 +36,7 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
             timeValue= "" + hour
           } else if (hour > 12) {
             timeValue= "" + (hour - 12);
-          } else if (hour == 0) {
+          } else if (hour === 0) {
             timeValue= "12"
           }
 
@@ -47,14 +47,10 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
 
     }
 
-    function handleClientChange(e) {
-        setSelectedClient(e.target.value)
-   }
 
     function handleSubmitChanges(e) {
         e.preventDefault()
 
-        const client = clients.find((client) => client.name == selectedClient)
 
         const editedEvent = {
             name: name,
@@ -66,7 +62,7 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
             locaiton: location,
             budget: budget,
             id: event.id,
-            client_id: client.id,
+            client_id: event.client.id,
         }
 
 
@@ -110,6 +106,8 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
         <div className='edit-background'>
          <form className="edit-form" onSubmit={handleSubmitChanges}>
              <div className="edit-title">Edit Event</div>
+             <br></br>
+             <p>Client: {event.client.name}</p>
              <div className="input-container ic0">
                 <input  id="name" className="input" type="text"  defaultValue={name}  onChange={(e) => setName(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Name</label>
@@ -142,26 +140,6 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
                 <input id="budget" className="input" type="text" defaultValue={budget} onChange={(e) => setBudget(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Budget</label>
             </div>
-            {/* <div className="input-container ic0">
-                <input id="current-cost" className="input" type="integer"  defaultValue={currentCost} onChange={(e) => setCurrentCost(e.target.value)}/>
-                <label className="edit-cut edit-cut-short">Current Cost</label>
-            </div> */}
-            {/* <div>
-            <h2>Cost Per Vendor</h2>
-                {event.event_vendors.map((detail) => {
-                    console.log(detail.vendor_id)
-                    const vendor = vendors.find((vendor) => vendor.id == detail.vendor_id)
-                   return ( <div className="input-container ic0">
-                    <input id="vendor-cost" className="input" type="integer"  defaultValue={detail.total_cost} onChange={(e) => setCurrentCost(e.target.value)}/>
-                    <label className="edit-cut edit-cut-short">{vendor.name}</label>
-                </div>)
-                })}
-            </div> */}
-            {/* <div className="edit-title">Select Client</div>
-            <br></br>
-            <select value={selectedClient} onChange={handleClientChange}>
-                {clients.map((client) => <option key={client.id}>{client.name}</option>)}
-            </select> */}
             <div className="edit-title">Select Vendors</div>
             <br></br>
             <div>

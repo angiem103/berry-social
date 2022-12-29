@@ -1,5 +1,7 @@
 class EventVendorsController < ApplicationController
 
+    skip_before_action :authorized, only: [:update, :index]
+
     def index
         event_vendors = EventVendor.all
         if event_vendors
@@ -27,7 +29,7 @@ class EventVendorsController < ApplicationController
     def update
         event_vendor = EventVendor.find_by(id: params[:id])
         if event_vendor
-            event_vendor.update(event_params)
+            event_vendor.update(event_vendor_params)
             render json: event_vendor
         else
             render json: { error: "No information found" }, status: :not_found

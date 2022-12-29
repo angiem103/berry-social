@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react"; 
 import { useNavigate } from "react-router-dom";
-import "../index.css"
+import "../index.css";
 import "../Container.css";
 
 
@@ -9,34 +9,39 @@ function CostCard( {cost, event}) {
 
 
     const navigate = useNavigate();
-    const [vendorCost, setVendorCost] = useState(cost?.total_cost ?? "")
 
-    const vendor = event.vendors.find(vendor => vendor.id == cost.vendor_id) 
+    const [vendorCost, setVendorCost] = useState(cost?.total_cost ?? "");
+
+    const vendor = event.vendors.find(vendor => vendor.id === cost.vendor_id);
 
     function handleSubmitChanges(e){
-        e.preventDefautl()
+        e.preventDefault()
 
         const costObj = {
+            id: cost.id,
             event_id: event.id,
             vendor_id: vendor.id,
             total_cost: vendorCost
         }
 
-        console.log(costObj)
 
-        fetch(`/event_vendors/${event.id}`, {
-            method: "PATCH", 
-            header: {
-                "Content-Type" : "application/json"
-            },
+         fetch(`/event_vendors/${cost.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type' : 'application/json'
+             },
             body: JSON.stringify(costObj)
-        })
-        .then( r => r.json())
-        .then(navigate('/home'))
-    }
+            })
+            .then(r => r.json())
+             .then(obj => {
+                console.log(obj)
+                navigate("/home")
+            })
+
+    };
+
 
     return event ? (
-    <div>
     <form id="cost-card" onSubmit={handleSubmitChanges}>
         <div className="edit-title">{vendor.name}</div>
         <div className="input-container ic0">
@@ -45,8 +50,8 @@ function CostCard( {cost, event}) {
            <button type="submit" className="submit">Edit</button>
        </div>
         </form>
-        </div>
+
     ): undefined
-}
+};
 
 export default CostCard;
