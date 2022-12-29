@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes,  Route } from 'react-router-dom';
+import { Routes,  Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
@@ -31,7 +31,7 @@ function App() {
           )
       }
     })
-  },[])
+  },[]);
 
   useEffect(() => {
     fetch('/events')
@@ -41,18 +41,18 @@ function App() {
           )
       }
     })
-  },[])
+  },[]);
 
   useEffect(() => {
     fetch("/vendors")
     .then(r => r.json())
     .then((vendors) => setVendors(vendors)
     )
-  }, [])
+  }, []);
 
   function handleLogin(user) {
     setCurrentUser(user)
-  }
+  };
 
   function handleSetUser(user) {
     setCurrentUser(user)
@@ -75,7 +75,7 @@ function App() {
 
   function handleNewVendor(newVendor) {
     setVendors([...vendors,newVendor])
-  }
+  };
 
   function handleVendorDelete(deletedVendor){
     const updatedVendors = vendors.filter((vendor) => vendor.id !== deletedVendor.id)
@@ -89,7 +89,7 @@ function App() {
   
   function handleNewClient(newClient) {
     setClients([...clients,newClient])
-  }
+  };
 
   if (!currentUser) 
   return (
@@ -103,15 +103,28 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} setActive={setActive} active={active} addEvent={handleNewEvent} vendors={vendors} onVendorDelete={handleVendorDelete} onClientDelete={handleClientDelete}/>} />
+        <Route path="/home" element =
+        {<Home 
+            currentUser={currentUser} 
+            setCurrentUser={setCurrentUser} 
+            events={events} 
+            clients={clients} 
+            onEventDelete={handleDeleteEvent} 
+            setActive={setActive} 
+            active={active} 
+            addEvent={handleNewEvent} 
+            endors={vendors} 
+            onVendorDelete={handleVendorDelete} 
+            onClientDelete={handleClientDelete}/>
+          } />
         <Route path="/events/:id" element={<EditEvent events={events} clients={clients} vendors={vendors} onEditEvent={handleEditEvent} />} />
         <Route path="/newvendor" element={<NewVendor currentUser={currentUser} setActive={setActive} onNewVendor={handleNewVendor}/>} />
-        <Route path="/newclient" element={<NewClient currentUser={currentUser} setActive={setActive} onNewClient={handleNewClient}/>} />
+        <Route path="/newclient" element={<NewClient currentUser={currentUser} setActive={setActive} onNewClient={handleNewClient} events={events} setEvents={setEvents}/>} />
         <Route path="/costmanager/:id" element={<CostManager events={events} />} />
       </Routes>
 
     </div>
   );
-}
+};
 
 export default App;

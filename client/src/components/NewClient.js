@@ -1,9 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../index.css"
 
-function NewClient ( { currentUser, setActive, onNewClient } ) {
+function NewClient ( { currentUser, setActive, onNewClient} ) {
 
 
     const [name, setName] = useState('');
@@ -36,6 +36,7 @@ function NewClient ( { currentUser, setActive, onNewClient } ) {
             setActive("Clients")
             navigate('/home')
         })
+
             
         }
     
