@@ -2,42 +2,42 @@
     font-family: Arial;
     font-size: 16px;
     background:pink;
-  }
+}
   
-  .sidebar {
-    position: fixed;
-    width: 20%;
-    height: 100%;
-    background: rgba(238, 99, 143, 0.598);
-    font-size: .70em;
-  }
+.sidebar {
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  background: rgba(238, 99, 143, 0.598);
+  font-size: .70em;
+}
   
-  .nav {
-    position: relative;
-    margin: 0 15%;
-    text-align: right;
-    top: 33%;
-    transform: translateY(-50%);
-    font-weight: bold;
-    display: block;
+.nav {
+  position: relative;
+  margin: 0 15%;
+  text-align: right;
+  top: 33%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  display: block;
 
-  }
+}
   
 
       
-      .nav-button {
-        line-height: 5em;
-        text-transform: uppercase;
-        text-decoration: none;
-        letter-spacing: 0.4em;
-        display: block;
-        transition: all ease-out 300ms;
-        color:white;
-        position: relative;
-        border-color:rgba(238, 99, 143, 0) ;
-        background-color: rgba(238, 99, 143, 0);
-        
-      } 
+.nav-button {
+  line-height: 5em;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.4em;
+  display: block;
+  transition: all ease-out 300ms;
+  color:white;
+  position: relative;
+  border-color:rgba(238, 99, 143, 0) ;
+  background-color: rgba(238, 99, 143, 0);   
+    } 
+
 .nav-button:hover {
   color: black;
 }

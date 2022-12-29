@@ -20,7 +20,7 @@ function Clients ( { clients, onClientDelete } ) {
   }
 
     return (
-        <section className="twitter">
+        <section className="background">
         <h1 className="header">Clients</h1>
         <div className="vendor-container">
           {renderClients}

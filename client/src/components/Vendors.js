@@ -20,9 +20,9 @@ function Vendors ( { vendors, onVendorDelete } ) {
   }
 
     return (
-        <section className="twitter">
+        <section className="background">
         <h1 className="header">Vendors</h1>
-        <div className="vendor-container">
+        <div className="container">
           {renderVendors}
         </div>
         <button className="new-vendor-submit" onClick={handleNewVendor}>Add New Vendor</button>

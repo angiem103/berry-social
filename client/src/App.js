@@ -113,7 +113,7 @@ function App() {
             setActive={setActive} 
             active={active} 
             addEvent={handleNewEvent} 
-            endors={vendors} 
+            vendors={vendors} 
             onVendorDelete={handleVendorDelete} 
             onClientDelete={handleClientDelete}/>
           } />
