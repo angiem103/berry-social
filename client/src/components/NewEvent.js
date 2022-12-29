@@ -15,7 +15,6 @@ function NewEvent ( { events, clients, addEvent, currentUser, setActive } ) {
         const [description, setDescription] = useState('');
         const [location, setLocation] = useState('');
         const [budget, setBudget] = useState('');
-        const [currentCost, setCurrentCost] = useState('');
         const [startDate, setStartDate] = useState('');
         const [startTime, setStartTime] = useState('');
         const [endDate, setEndDate] = useState('');
@@ -43,11 +42,9 @@ function NewEvent ( { events, clients, addEvent, currentUser, setActive } ) {
                 end_time: endTime,
                 location: location,
                 budget: budget,
-                current_cost: currentCost,
                 client_id: client.id,
             };
 
-            // :name,:description, :location, :budget, :current_cost, :start_date, :end_date, :end_time, :start_time, :client_id
     
     
             fetch('/events', {
@@ -106,10 +103,7 @@ function NewEvent ( { events, clients, addEvent, currentUser, setActive } ) {
                     <input id="budget" className="input" type="text"  onChange={(e) => setBudget(e.target.value)}/>
                     <label className="edit-cut edit-cut-short">Budget</label>
                 </div>
-                <div className="input-container ic0">
-                    <input id="current-cost" className="input" type="integer"   onChange={(e) => setCurrentCost(e.target.value)}/>
-                    <label className="edit-cut edit-cut-short">Current Cost</label>
-                </div>
+                <br></br>
                 <select value={selectedClient} onChange={handleClientChange}>
                     <option disabled={true} value="">
                             Choose Client
@@ -117,9 +111,11 @@ function NewEvent ( { events, clients, addEvent, currentUser, setActive } ) {
                     { clients ? clients.map((client) => <option key={client.id} value={client.id}>{client.name}</option>) : undefined}
 
                 </select>
-                <button type="submit" className="submit">Create Event</button>
+
+                <br></br>
+                <button type="submit" className="submit-small">Create Event</button>
                 <Link to={"/home"}>
-                    <button id='submit'>Cancel</button >
+                    <button className='submit-small'>Cancel</button >
                 </ Link>
              </form>
             </div>

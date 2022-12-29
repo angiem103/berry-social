@@ -1,5 +1,4 @@
 import React from 'react' ;
-import { useState } from 'react';
 
 function SelectedVendors ( { vendors, setIsChecked, isChecked, events } ) {
 

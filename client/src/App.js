@@ -71,6 +71,19 @@ function App() {
     setEvents([...events,newEvent])
   };
 
+  function handleNewVendor(newVendor) {
+    setVendors([...vendors,newVendor])
+  }
+
+  function handleVendorDelete(deletedVendor){
+    const updatedVendors = vendors.filter((vendor) => vendor.id !== deletedVendor.id)
+    setVendors([...updatedVendors])
+  };
+
+  function handleClientDelete(deletedClient){
+    const updatedClients = clients.filter((client) => client.id !== deletedClient.id)
+    setClients([...updatedClients])
+  };
 
   if (!currentUser) 
   return (
@@ -84,10 +97,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} setActive={setActive} active={active} addEvent={handleNewEvent} vendors={vendors}/>} />
+        <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} setActive={setActive} active={active} addEvent={handleNewEvent} vendors={vendors} onVendorDelete={handleVendorDelete} onClientDelete={handleClientDelete}/>} />
         <Route path="/events/:id" element={<EditEvent events={events} clients={clients} vendors={vendors} onEditEvent={handleEditEvent} />} />
-        <Route path="/newvendor" element={<NewVendor currentUser={currentUser} setActive={setActive}/>} />
-        <Route path="/event_vendors/:id" element={<CostManager events={events}/>} />
+        <Route path="/newvendor" element={<NewVendor currentUser={currentUser} setActive={setActive} onNewVendor={handleNewVendor}/>} />
+        <Route path="/costmanager/:id" element={<CostManager events={events} />} />
       </Routes>
 
     </div>

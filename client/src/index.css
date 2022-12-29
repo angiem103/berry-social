@@ -167,7 +167,7 @@
   margin-top: 30px;
   padding-left: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.1em;
 }
 
 .submit {
@@ -185,16 +185,13 @@
   width: 100%;
 }
 
-.submit:active {
-  background-color: rgba(75, 187, 155, 0.656);
-}
+
 
 #berry-social {
  height: 675px;
  font-family: sans-serif;
  color: rgb(255, 255, 255);
  font-size: 75px;
- /* -webkit-text-stroke: 1px rgb(240, 182, 221);  */
  position:absolute;
 }
 
@@ -216,7 +213,7 @@
   padding: 20px;
   width: 900px;
   height: fit-content;
-  margin-top: 300px;
+  margin-top: 470px;
 }
 
 .edit-background {
@@ -256,4 +253,34 @@
   width: 25%;
   outline: 0;
   text-align: center;
+}
+
+.new-vendor-form {
+  background-color: rgba(238, 99, 143, 0.598);
+  border-radius: 20px;
+  padding: 20px;
+  width: 500px;
+  height: fit-content;
+  margin-top: 50px;
+  width: 60%;
+}
+
+.edit-cut-short-vendor {
+  width: 100px;
+}
+
+.submit-small {
+  background-color: rgba(238, 99, 143, 0.814);
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 20px;
+  margin-right: 10px;
+  outline: 0;
+  text-align: center;
+  width: 20%;
 }

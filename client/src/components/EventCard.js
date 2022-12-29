@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import "../Container.css";
 
 function EventCard( { event, onEventDelete }) {
@@ -42,21 +42,23 @@ function EventCard( { event, onEventDelete }) {
     }
 
     return ( <div className='card' >
-         <h1 className='title'>{event.name}</h1>
+         <h1 className='card-title'>{event.name}</h1>
              <p>Client: {event.client.name}</p>
              <p>Date: {event.start_date}</p>
              <p>Time: {getTime(event.start_time)}</p>
              <p>Location: {event.location}</p>
              <p>Description: {event.description}</p>
              <br></br>
-             <ul>
+             <p>Budget: {event.budget}</p>
+             <p>Current Cost: {event.total}</p>
+             <br></br>
+             <Link className="costlink" to={`/costmanager/${event.id}`}>Cost Manager</Link>
+             <div id="vendor-title">
+                 <br></br>
                 Vendors:
                 {event.vendors.map((vendor) => 
-                <li key={vendor.id}>{vendor.name}</li>)}
-             </ul>
-             <p> . Budget: {event.budget}</p>
-             <p> . Current Cost: {event.current_cost}</p>
-             <button onClick={()=>navigate(`/event_vendors/${event.id}`)}>Cost Manager</button>
+                <p id="vendor-list" key={vendor.id}> - {vendor.name}</p>)}
+             </div>
             <button id='edit-button' onClick={handleEdit} >Edit</button >
              <button id='delete-button' onClick={handleEventDelete}>Delete Event</button>
        </div>) 

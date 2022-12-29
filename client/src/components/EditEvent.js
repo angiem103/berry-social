@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useParams} from "react-router-dom";
 import "../index.css"
 import SelectedVendors from './SelectedVendors';
@@ -19,7 +19,6 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
     const [description, setDescription] = useState(event?.description ?? "");
     const [location, setLocation] = useState(event?.location ?? "");
     const [budget, setBudget] = useState(event?.budget ?? "");
-    const [currentCost, setCurrentCost] = useState(event?.current_cost ?? "");
     const [startDate, setStartDate] = useState(event?.start_date ?? "");
     const [startTime, setStartTime] = useState(event ? getTime(event.start_time) : "");
     const [endDate, setEndDate] = useState(event?.end_date ?? "");
@@ -66,7 +65,6 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
             end_time: endTime,
             locaiton: location,
             budget: budget,
-            current_cost: currentCost,
             id: event.id,
             client_id: client.id,
         }
@@ -144,30 +142,35 @@ function EditEvent ( { events, onEditEvent, clients, vendors } ) {
                 <input id="budget" className="input" type="text" defaultValue={budget} onChange={(e) => setBudget(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Budget</label>
             </div>
-            <div className="input-container ic0">
+            {/* <div className="input-container ic0">
                 <input id="current-cost" className="input" type="integer"  defaultValue={currentCost} onChange={(e) => setCurrentCost(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Current Cost</label>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
             <h2>Cost Per Vendor</h2>
                 {event.event_vendors.map((detail) => {
+                    console.log(detail.vendor_id)
+                    const vendor = vendors.find((vendor) => vendor.id == detail.vendor_id)
                    return ( <div className="input-container ic0">
                     <input id="vendor-cost" className="input" type="integer"  defaultValue={detail.total_cost} onChange={(e) => setCurrentCost(e.target.value)}/>
-                    <label className="edit-cut edit-cut-short">hi</label>
+                    <label className="edit-cut edit-cut-short">{vendor.name}</label>
                 </div>)
                 })}
-            </div>
-
+            </div> */}
+            {/* <div className="edit-title">Select Client</div>
+            <br></br>
             <select value={selectedClient} onChange={handleClientChange}>
                 {clients.map((client) => <option key={client.id}>{client.name}</option>)}
-            </select>
+            </select> */}
+            <div className="edit-title">Select Vendors</div>
+            <br></br>
             <div>
                <SelectedVendors vendors={vendors} isChecked={isChecked} setIsChecked={setIsChecked} events={events} />
             </div>
 
-            <button type="submit" className="submit">Edit</button>
+            <button type="submit" className="submit-small">Edit</button>
             <Link to={"/home"}>
-                <button id='submit'>Cancel</button >
+                <button className="submit-small">Cancel</button >
             </ Link>
          </form>
         </div>

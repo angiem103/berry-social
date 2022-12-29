@@ -19,6 +19,17 @@ class VendorsController < ApplicationController
         render json: vendor, status: :created
     end
 
+
+    def destroy
+        vendor = Vendor.find_by(id: params[:id])
+        if vendor
+            vendor.destroy
+            head :no_content
+        else
+            render json: {error: "Vendor Not Found"}, status: :not_found
+        end
+    end
+
     private
 
     def vendor_params

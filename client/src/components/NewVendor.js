@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import "../index.css"
 
-function NewVendor ( { currentUser, setActive } ) {
+function NewVendor ( { currentUser, setActive, onNewVendor } ) {
 
 
     const [name, setName] = useState('');
@@ -35,7 +36,7 @@ function NewVendor ( { currentUser, setActive } ) {
         })
         .then(r => r.json())
         .then(vendor => {
-            // addVendor(vendor)
+            onNewVendor(vendor)
             setActive("Vendors")
             navigate('/home')
         })
@@ -47,7 +48,7 @@ function NewVendor ( { currentUser, setActive } ) {
       return (
     
             <div className='edit-background'>
-             <form className="new-event-form" onSubmit={handleNewVendor}>
+             <form className="new-vendor-form" onSubmit={handleNewVendor}>
                  <div className="edit-title">Vendor</div>
                  <div className="input-container ic0">
                     <input  id="name" className="input" type="text" onChange={(e) => setName(e.target.value)}/>
@@ -55,11 +56,11 @@ function NewVendor ( { currentUser, setActive } ) {
                 </div>
                 <div className="input-container ic0">
                     <input id="contat-person" className="input" type="text"  onChange={(e) => setContactPerson(e.target.value)}/>
-                    <label className="edit-cut edit-cut-short">Contact Person</label>
+                    <label className="edit-cut edit-cut-short-vendor">Contact Person</label>
                 </div>
                 <div className="input-container ic0">
                     <input id="phone-number" className="input" type="text"  onChange={(e) => setPhoneNumber(e.target.value)}/>
-                    <label className="edit-cut edit-cut-short">Phone Number</label>
+                    <label className="edit-cut edit-cut-short-vendor">Phone Number</label>
                 </div>
                 <div className="input-container ic0">
                      <input id="email" className="input" type="text"  onChange={(e) => setEmail(e.target.value)}/>
@@ -69,9 +70,9 @@ function NewVendor ( { currentUser, setActive } ) {
                     <input id="desc" className="input" type="text" onChange={(e) => setDesc(e.target.value)}/>
                     <label className="edit-cut edit-cut-short">Description</label>
                 </div>
-                <button type="submit" className="submit">Create Vendor</button>
+                <button type="submit" className="submit-small">Create Vendor</button>
                 <Link to={"/home"}>
-                    <button id='submit'>Cancel</button >
+                    <button className='submit-small'>Cancel</button >
                 </ Link>
              </form>
             </div>
