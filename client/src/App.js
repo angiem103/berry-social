@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import EditEvent from "./components/EditEvent";
 import NewVendor from "./components/NewVendor";
 import CostManager from "./components/CostManager";
+import NewClient from "./components/NewClient";
+
 
 
 
@@ -84,6 +86,10 @@ function App() {
     const updatedClients = clients.filter((client) => client.id !== deletedClient.id)
     setClients([...updatedClients])
   };
+  
+  function handleNewClient(newClient) {
+    setClients([...clients,newClient])
+  }
 
   if (!currentUser) 
   return (
@@ -100,6 +106,7 @@ function App() {
         <Route path="/home" element ={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} events={events} clients={clients} onEventDelete={handleDeleteEvent} setActive={setActive} active={active} addEvent={handleNewEvent} vendors={vendors} onVendorDelete={handleVendorDelete} onClientDelete={handleClientDelete}/>} />
         <Route path="/events/:id" element={<EditEvent events={events} clients={clients} vendors={vendors} onEditEvent={handleEditEvent} />} />
         <Route path="/newvendor" element={<NewVendor currentUser={currentUser} setActive={setActive} onNewVendor={handleNewVendor}/>} />
+        <Route path="/newclient" element={<NewClient currentUser={currentUser} setActive={setActive} onNewClient={handleNewClient}/>} />
         <Route path="/costmanager/:id" element={<CostManager events={events} />} />
       </Routes>
 
