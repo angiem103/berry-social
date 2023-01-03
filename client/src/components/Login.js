@@ -26,7 +26,7 @@ function Login({ onLogin }) {
           if(r.ok) {
             r.json().then((user) => {
               onLogin(user)
-              navigate('/home')
+              navigate('/events')
             })
           } else {
             r.json().then((err)=> {

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import CostCard from "./CostCard";
 import "../Container.css";
+import { InfoContext } from "../App";
 
 
-function CostManager( {events} ) {
+function CostManager() {
+
+    const {events} = useContext(InfoContext)
 
     const params = useParams();
     const event =  events.find((event) => String(event.id) === params.id);

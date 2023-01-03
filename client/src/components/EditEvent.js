@@ -1,12 +1,13 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate, useParams} from "react-router-dom";
+import { InfoContext } from '../App';
 import "../index.css"
 import SelectedVendors from './SelectedVendors';
 
 
-function EditEvent ( { events, onEditEvent, vendors } ) {
+function EditEvent ( { onEditEvent } ) {
     
+    const {events, vendors} = useContext(InfoContext);
 
     const params = useParams();
     const event = events.find((event) => String(event.id) === params.id)

@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import VendorCard from "./VendorCard";
 import { useNavigate } from "react-router-dom";
+import { InfoContext } from "../App";
 import "../Container.css";
 import "../index.css"
 
-function Vendors ( { vendors, onVendorDelete } ) {
+
+function Vendors ( { onVendorDelete } ) {
 
   const navigate = useNavigate();
+
+  const {vendors} = useContext(InfoContext);
 
   const renderVendors = vendors ? vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((vendor) => (
     <div  key={vendor.id} >

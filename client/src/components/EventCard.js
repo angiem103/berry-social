@@ -42,7 +42,7 @@ function EventCard( { event, onEventDelete }) {
     }
 
     return ( <div className='card' >
-         <h1 className='card-title'>{event.name}</h1>
+         <h1 className='title'>{event.name}</h1>
              <p>Client: {event.client.name}</p>
              <p>Date: {event.start_date}</p>
              <p>Time: {getTime(event.start_time)}</p>

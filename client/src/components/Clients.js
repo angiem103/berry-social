@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import ClientCard from "./ClientCard";
 import { useNavigate } from "react-router-dom";
+import { InfoContext } from "../App";
 import "../Container.css";
 import "../index.css";
 
-function Clients ( { clients, onClientDelete } ) {
+function Clients ( { onClientDelete } ) {
 
   const navigate = useNavigate();
+  const {clients} = useContext(InfoContext);  
 
   const renderClients = clients.map((client) => (
     <div key={client.id}>

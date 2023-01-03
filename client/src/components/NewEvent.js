@@ -1,12 +1,14 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
+import { InfoContext } from '../App';
 import "../index.css"
 
 
-function NewEvent ( { clients, addEvent, currentUser } ) {
+function NewEvent ( { addEvent, currentUser } ) {
 
         const navigate = useNavigate();
+
+        const {clients} = useContext(InfoContext);
 
         const [name, setName] = useState('');
         const [description, setDescription] = useState('');
