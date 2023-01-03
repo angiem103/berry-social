@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../index.css"
 
-function NewVendor ( { currentUser, setActive, onNewVendor } ) {
+function NewVendor ( { currentUser, onNewVendor } ) {
 
 
     const [name, setName] = useState('');

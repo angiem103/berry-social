@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../index.css"
 
-function NewClient ( { currentUser, setActive, onNewClient} ) {
+function NewClient ( { currentUser, onNewClient} ) {
 
 
     const [name, setName] = useState('');

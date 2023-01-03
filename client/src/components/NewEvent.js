@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import "../index.css"
 
 
-function NewEvent ( { events, clients, addEvent, currentUser, setActive } ) {
+function NewEvent ( { clients, addEvent, currentUser } ) {
 
         const navigate = useNavigate();
 

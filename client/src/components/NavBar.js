@@ -2,7 +2,7 @@ import React from "react";
 import "../NavBar.css";
 import { useNavigate, Link } from 'react-router-dom';
 
-function NavBar( {currentUser, setCurrentUser, setActive } ) {
+function NavBar( {currentUser, setCurrentUser } ) {
 
     const navigate = useNavigate()
 

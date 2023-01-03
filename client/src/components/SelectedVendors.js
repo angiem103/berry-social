@@ -1,6 +1,6 @@
 import React from 'react' ;
 
-function SelectedVendors ( { vendors, setIsChecked, isChecked, events } ) {
+function SelectedVendors ( { vendors, setIsChecked, isChecked } ) {
 
  
     const handleClick = e => {

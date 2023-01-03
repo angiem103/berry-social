@@ -5,7 +5,7 @@ import "../index.css"
 import SelectedVendors from './SelectedVendors';
 
 
-function EditEvent ( { events, onEditEvent, clients, vendors } ) {
+function EditEvent ( { events, onEditEvent, vendors } ) {
     
 
     const params = useParams();
