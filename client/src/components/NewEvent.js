@@ -4,11 +4,11 @@ import { InfoContext } from '../App';
 import "../index.css"
 
 
-function NewEvent ( { addEvent, currentUser } ) {
+function NewEvent ( ) {
 
         const navigate = useNavigate();
 
-        const {clients} = useContext(InfoContext);
+        const {clients, events, setEvents, currentUser} = useContext(InfoContext);
 
         const [name, setName] = useState('');
         const [description, setDescription] = useState('');
@@ -28,9 +28,7 @@ function NewEvent ( { addEvent, currentUser } ) {
         function handleNewEvent(e) {
             e.preventDefault()
     
-            const client = clients.find((client) => client.id === selectedClient)
-            console.log(client)
-    
+
             const newEvent = {
                 user_id: currentUser.id,
                 name: name,
@@ -41,7 +39,7 @@ function NewEvent ( { addEvent, currentUser } ) {
                 end_time: endTime,
                 location: location,
                 budget: budget,
-                client_id: client.id,
+                client_id: selectedClient,
             };
 
     
@@ -55,7 +53,7 @@ function NewEvent ( { addEvent, currentUser } ) {
             })
             .then(r => r.json())
             .then(event => {
-                addEvent(event)
+                setEvents([...events,event])
                 navigate('/events')
             })
             

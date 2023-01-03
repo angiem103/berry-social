@@ -62,24 +62,11 @@ function App() {
     setCurrentUser(user)
   };
 
-  function handleEditEvent(editedEvent) {
-    const unchangedEvents = events.filter(event => event.id !== editedEvent.id)
-    setEvents([...unchangedEvents,editedEvent])
-
-  };
-
   function handleDeleteEvent(deletedEvent){
     const updatedEvents = events.filter((event) => event.id !== deletedEvent.id)
     setEvents([...updatedEvents])
   };
 
-  function handleNewEvent(newEvent) {
-    setEvents([...events,newEvent])
-  };
-
-  function handleNewVendor(newVendor) {
-    setVendors([...vendors,newVendor])
-  };
 
   function handleVendorDelete(deletedVendor){
     const updatedVendors = vendors.filter((vendor) => vendor.id !== deletedVendor.id)
@@ -91,9 +78,6 @@ function App() {
     setClients([...updatedClients])
   };
   
-  function handleNewClient(newClient) {
-    setClients([...clients,newClient])
-  };
 
   if (!currentUser) 
   return (
@@ -106,16 +90,16 @@ function App() {
   )
   return (
     <div className="App">
-      <InfoContext.Provider value={{events, clients, vendors}}>
+      <InfoContext.Provider value={{events, setEvents, clients, setClients, vendors, currentUser}}>
       <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
       <Routes>
         <Route path="/clients" element={<Clients  onClientDelete={handleClientDelete} />}/>
-        <Route path="/events" element={<Events onEventDelete={handleDeleteEvent} setEvents={setEvents}/>}/>
-        <Route path="/newevent" element={<NewEvent addEvent={handleNewEvent} currentUser={currentUser} /> }/>
+        <Route path="/events" element={<Events onEventDelete={handleDeleteEvent} />}/>
+        <Route path="/newevent" element={<NewEvent /> }/>
         <Route path="/vendors" element={<Vendors onVendorDelete={handleVendorDelete} />}/>
-        <Route path="/events/:id" element={<EditEvent onEditEvent={handleEditEvent} />} />
-        <Route path="/newvendor" element={<NewVendor currentUser={currentUser} onNewVendor={handleNewVendor}/>} />
-        <Route path="/newclient" element={<NewClient currentUser={currentUser} onNewClient={handleNewClient} setEvents={setEvents}/>} />
+        <Route path="/events/:id" element={<EditEvent />} />
+        <Route path="/newvendor" element={<NewVendor />} />
+        <Route path="/newclient" element={<NewClient />} />
         <Route path="/costmanager/:id" element={<CostManager/>} />
       </Routes>
       </InfoContext.Provider>

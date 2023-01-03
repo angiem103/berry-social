@@ -5,9 +5,9 @@ import "../index.css"
 import SelectedVendors from './SelectedVendors';
 
 
-function EditEvent ( { onEditEvent } ) {
+function EditEvent () {
     
-    const {events, vendors} = useContext(InfoContext);
+    const {events, vendors, setEvents} = useContext(InfoContext);
 
     const params = useParams();
     const event = events.find((event) => String(event.id) === params.id)
@@ -76,8 +76,9 @@ function EditEvent ( { onEditEvent } ) {
         })
         .then(r => r.json())
         .then(editedEvent => {
-            onEditEvent(editedEvent)
-            navigate("/home")
+            const unchangedEvents = events.filter(event => event.id !== editedEvent.id)
+            setEvents([...unchangedEvents,editedEvent])
+            navigate("/events")
         })
 
 

@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useContext }from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { InfoContext } from '../App';
 import "../index.css"
 
-function NewVendor ( { currentUser, onNewVendor } ) {
+function NewVendor () {
 
+    const {vendors, setVendors, currentUser} = useContext(InfoContext);
 
     const [name, setName] = useState('');
     const [contactPerson, setContactPerson] = useState('');
@@ -36,7 +37,7 @@ function NewVendor ( { currentUser, onNewVendor } ) {
         })
         .then(r => r.json())
         .then(vendor => {
-            onNewVendor(vendor)
+            setVendors([...vendors,vendor])
             navigate('/vendors')
         })
             

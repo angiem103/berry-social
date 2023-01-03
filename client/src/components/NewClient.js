@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useContext }from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { InfoContext } from '../App';
 import "../index.css"
 
-function NewClient ( { currentUser, onNewClient} ) {
+function NewClient () {
 
+    const {clients,setClients, currentUser} = useContext(InfoContext);
 
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -32,7 +33,7 @@ function NewClient ( { currentUser, onNewClient} ) {
         })
         .then(r => r.json())
         .then(client => {
-            onNewClient(client)
+            setClients([...clients,client])
             navigate('/clients')
         })
 
