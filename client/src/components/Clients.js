@@ -9,8 +9,8 @@ function Clients ( { clients, onClientDelete } ) {
   const navigate = useNavigate();
 
   const renderClients = clients.map((client) => (
-    <div >
-      <ClientCard key={client.id} client={client} onClientDelete={onClientDelete}/>
+    <div key={client.id}>
+      <ClientCard  client={client} onClientDelete={onClientDelete}/>
     </div>
   ));
 

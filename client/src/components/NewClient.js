@@ -33,8 +33,7 @@ function NewClient ( { currentUser, setActive, onNewClient} ) {
         .then(r => r.json())
         .then(client => {
             onNewClient(client)
-            setActive("Clients")
-            navigate('/home')
+            navigate('/clients')
         })
 
             
@@ -60,7 +59,7 @@ function NewClient ( { currentUser, setActive, onNewClient} ) {
                     <label className="edit-cut edit-cut-short">Email</label>
                 </div>
                 <button type="submit" className="submit-small">Create Client</button>
-                <Link to={"/home"}>
+                <Link to={"/clients"}>
                     <button className='submit-small'>Cancel</button >
                 </ Link>
              </form>

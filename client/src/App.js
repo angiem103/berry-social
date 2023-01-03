@@ -1,13 +1,17 @@
 import React from "react";
 import { Routes,  Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import EditEvent from "./components/EditEvent";
 import NewVendor from "./components/NewVendor";
 import CostManager from "./components/CostManager";
 import NewClient from "./components/NewClient";
+import NavBar from "./components/NavBar";
+import Events from "./components/Events";
+import Clients from "./components/Clients";
+import NewEvent from "./components/NewEvent";
+import Vendors from "./components/Vendors";
 
 
 
@@ -18,7 +22,6 @@ function App() {
   const [events, setEvents] = useState([]);
   const [clients, setClients] = useState([]);
   const [vendors, setVendors] = useState ([]);
-  const [active, setActive] = useState('Events');
   
   useEffect(() => {
     fetch('/auth')
@@ -102,21 +105,12 @@ function App() {
   )
   return (
     <div className="App">
+      <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} setActive = {setActive}/>
       <Routes>
-        <Route path="/home" element =
-        {<Home 
-            currentUser={currentUser} 
-            setCurrentUser={setCurrentUser} 
-            events={events} 
-            clients={clients} 
-            onEventDelete={handleDeleteEvent} 
-            setActive={setActive} 
-            active={active} 
-            addEvent={handleNewEvent} 
-            vendors={vendors} 
-            onVendorDelete={handleVendorDelete} 
-            onClientDelete={handleClientDelete}/>
-          } />
+        <Route path="/clients" element={<Clients clients={clients} onClientDelete={handleClientDelete} />}/>
+        <Route path="/events" element={<Events events={events} clients={clients} onEventDelete={handleDeleteEvent} setEvents={setEvents}/>}/>
+        <Route path="/newevent" element={<NewEvent clients={clients} addEvent={handleNewEvent} currentUser={currentUser} /> }/>
+        <Route path="/vendors" element={<Vendors vendors={vendors} onVendorDelete={handleVendorDelete} />}/>
         <Route path="/events/:id" element={<EditEvent events={events} clients={clients} vendors={vendors} onEditEvent={handleEditEvent} />} />
         <Route path="/newvendor" element={<NewVendor currentUser={currentUser} setActive={setActive} onNewVendor={handleNewVendor}/>} />
         <Route path="/newclient" element={<NewClient currentUser={currentUser} setActive={setActive} onNewClient={handleNewClient} events={events} setEvents={setEvents}/>} />

@@ -8,11 +8,11 @@ function Vendors ( { vendors, onVendorDelete } ) {
 
   const navigate = useNavigate();
 
-  const renderVendors = vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((vendor) => (
-    <div >
-      <VendorCard key={vendor.id} vendor={vendor} onVendorDelete={onVendorDelete}/>
+  const renderVendors = vendors ? vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((vendor) => (
+    <div  key={vendor.id} >
+      <VendorCard vendor={vendor} onVendorDelete={onVendorDelete}/>
     </div>
-  ))
+  )) : undefined
 
   function handleNewVendor(e) {
     e.preventDefault()

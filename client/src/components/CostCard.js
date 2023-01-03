@@ -35,7 +35,7 @@ function CostCard( {cost, event}) {
             .then(r => r.json())
              .then(obj => {
                 console.log(obj)
-                navigate("/home")
+                navigate("/events")
             })
 
     };

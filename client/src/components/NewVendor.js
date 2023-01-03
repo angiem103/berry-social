@@ -37,8 +37,7 @@ function NewVendor ( { currentUser, setActive, onNewVendor } ) {
         .then(r => r.json())
         .then(vendor => {
             onNewVendor(vendor)
-            setActive("Vendors")
-            navigate('/home')
+            navigate('/vendors')
         })
             
         }
@@ -71,7 +70,7 @@ function NewVendor ( { currentUser, setActive, onNewVendor } ) {
                     <label className="edit-cut edit-cut-short">Description</label>
                 </div>
                 <button type="submit" className="submit-small">Create Vendor</button>
-                <Link to={"/home"}>
+                <Link to={"/vendors"}>
                     <button className='submit-small'>Cancel</button >
                 </ Link>
              </form>

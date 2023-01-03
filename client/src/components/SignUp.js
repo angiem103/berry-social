@@ -35,7 +35,7 @@ function SignUp({setUser}) {
         })
         .then(r => {
             if(r.ok){
-                r.json(setUser(user)).then(navigate('/'))
+                r.json(setUser(user)).then(navigate('/home'))
             } else {
                 r.json().then((err) => setErrors(err.error))
             }
