@@ -12,11 +12,11 @@ function Vendors ( { onVendorDelete } ) {
 
   const {vendors} = useContext(InfoContext);
 
-  const renderVendors = vendors ? vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((vendor) => (
+  const renderVendors = vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((vendor) => (
     <div  key={vendor.id} >
       <VendorCard vendor={vendor} onVendorDelete={onVendorDelete}/>
     </div>
-  )) : undefined
+  )) 
 
   function handleNewVendor(e) {
     e.preventDefault()
@@ -27,7 +27,7 @@ function Vendors ( { onVendorDelete } ) {
         <section className="background">
         <h1 className="header">Vendors</h1>
         <div className="container">
-          {renderVendors}
+          {vendors ? renderVendors : undefined}
         </div>
         <button className="new-vendor-submit" onClick={handleNewVendor}>Add New Vendor</button>
       </section>

@@ -24,17 +24,20 @@
   vertical-align: middle;
   background-attachment: fixed;
   overflow: scroll;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .signup-form {
   background-color: rgba(238, 99, 143, 0.598);
   border-radius: 20px;
   box-sizing: border-box;
-  height: 700px;
+  height: auto;
   padding: 20px;
   width: 400px;
   position:absolute;
 }
+
 .login-form {
   background-color:rgba(238, 99, 143, 0.598);
   border-radius: 20px;

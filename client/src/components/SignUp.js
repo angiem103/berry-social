@@ -35,7 +35,7 @@ function SignUp({setUser}) {
         })
         .then(r => {
             if(r.ok){
-                r.json(setUser(user)).then(navigate('/home'))
+                r.json(setUser(user)).then(navigate('/events'))
             } else {
                 r.json().then((err) => setErrors(err.error))
             }
@@ -77,7 +77,10 @@ function SignUp({setUser}) {
                 <div className="cut cut-short"></div>
                 <label htmlFor="password" className="placeholder">Password</label>
             </div>
-            <ul>{errors}</ul>
+            <br></br>
+            <ul>
+                {errors.map((error) => <li>{error}</li>)}
+            </ul>
             <button type="submit" className="submit">Sign Up</button>
          </form>
         </div>

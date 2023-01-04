@@ -10,6 +10,7 @@
   height: 100%;
   background: rgba(238, 99, 143, 0.598);
   font-size: .80em;
+  padding-top: 25px;
 }
   
 .nav {
@@ -42,13 +43,15 @@
 }
 
 .greeting {
-  line-height: 5em;
+  line-height: 1em;
   text-transform: uppercase;
   text-decoration: none;
+  text-align: center;
   letter-spacing: 0.1em;
   display: block;
   color:white;
-  padding-left: 25%;
+  padding-right: 5px;
   font-size: 18px;
+  padding-bottom: 0px;
 }
       

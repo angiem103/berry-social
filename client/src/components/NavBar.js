@@ -10,16 +10,17 @@ function NavBar( {currentUser, setCurrentUser } ) {
         fetch('/logout',{method: "DELETE"}).then((r) => {
             if(r.ok){
                 setCurrentUser(null)
-
-            }
+                navigate('/')
+            } 
         })
-        navigate('/')
+
     };
 
 return (
 <main className="main">
   <aside className="sidebar">
-    <p className="greeting">Hello {currentUser.first_name}</p>
+    <p className="greeting">Hello</p>
+    <p className="greeting" >{currentUser.first_name}</p>
     <nav className="nav">
         <Link to="/clients" className="nav-button" >Clients</Link>
         <Link to="/events" className="nav-button" >Events</Link>
