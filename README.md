@@ -23,7 +23,7 @@ Berry Social is a full-stack one page application that I've created for event pl
 
 
 ## Models and Relationships
-<img width="834" alt="Screen Shot 2023-01-08 at 6 17 45 PM" src="img width="873" alt="Screen Shot 2023-01-08 at 7 05 05 PM" src="https://user-images.githubusercontent.com/91964904/213611562-ccaeb9b7-54f6-40bc-bb0a-a349c1b14701.png"
+<img width="834" alt="Screen Shot 2023-01-08 at 7 05 05 PM" src="https://user-images.githubusercontent.com/91964904/213611562-ccaeb9b7-54f6-40bc-bb0a-a349c1b14701.png"/>
 
 * A User has many Clients
 * A Client has many Events
