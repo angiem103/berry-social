@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate, useParams} from "react-router-dom";
 import { InfoContext } from '../App';
 import "../index.css"
-import SelectedVendors from './SelectedVendors';
 
 
 function EditEvent () {
@@ -12,7 +11,7 @@ function EditEvent () {
     const params = useParams();
     const event = events.find((event) => String(event.id) === params.id)
     const navigate = useNavigate();
-    const [isChecked, setIsChecked] = useState([])
+
 
 
    
@@ -80,23 +79,6 @@ function EditEvent () {
             setEvents([...unchangedEvents,editedEvent])
             navigate("/events")
         })
-
-
-        isChecked.map((vendorId) => {
-            const jointObj = {
-                event_id: event.id,
-                vendor_id: vendorId
-            }
-
-            fetch("/event_vendors" , {
-                method: 'POST',
-                headers: {
-                    'Content-Type' : 'application/json'
-                },
-                body: JSON.stringify(jointObj)
-            })
-            .then(r => r.json())
-        })
         
     }
         
@@ -142,11 +124,11 @@ function EditEvent () {
                 <input id="budget" className="input" type="text" defaultValue={budget} onChange={(e) => setBudget(e.target.value)}/>
                 <label className="edit-cut edit-cut-short">Budget</label>
             </div>
-            <div className="edit-title">Select Vendors</div>
+            {/* <div className="edit-title">Select Vendors</div>
             <br></br>
             <div>
                <SelectedVendors vendors={vendors} isChecked={isChecked} setIsChecked={setIsChecked} events={events} />
-            </div>
+            </div> */}
 
             <button type="submit" className="submit-small">Edit</button>
             <Link to={"/home"}>

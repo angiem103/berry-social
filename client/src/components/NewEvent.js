@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { InfoContext } from '../App';
+import SelectedVendors from './SelectedVendors'
 import "../index.css"
 
 
@@ -8,7 +9,7 @@ function NewEvent ( ) {
 
         const navigate = useNavigate();
 
-        const {clients, events, setEvents, currentUser} = useContext(InfoContext);
+        const {clients, vendors, events, setEvents, currentUser} = useContext(InfoContext);
 
         const [name, setName] = useState('');
         const [description, setDescription] = useState('');
@@ -18,16 +19,20 @@ function NewEvent ( ) {
         const [startTime, setStartTime] = useState('');
         const [endDate, setEndDate] = useState('');
         const [endTime, setEndTime] = useState('');
-        const [selectedClient, setSelectedClient] = useState('')
+        const [selectedClient, setSelectedClient] = useState('');
+        const [vendorDet, setVendorDet] = useState([]);
     
     
         function handleClientChange(e) {
             setSelectedClient(e.target.value)
        }
     
+       console.log(vendorDet)
         function handleNewEvent(e) {
             e.preventDefault()
-    
+
+
+            console.log(vendorDet)
 
             const newEvent = {
                 user_id: currentUser.id,
@@ -40,6 +45,7 @@ function NewEvent ( ) {
                 location: location,
                 budget: budget,
                 client_id: selectedClient,
+                vendor_details: vendorDet
             };
 
     
@@ -107,10 +113,14 @@ function NewEvent ( ) {
                     { clients ? clients.map((client) => <option key={client.id} value={client.id}>{client.name}</option>) : undefined}
 
                 </select>
-
+                            <div className="edit-title">Manage Vendors</div>
+                <br></br>
+                <div>
+                    {vendors.map(vendor => <SelectedVendors vendor={vendor} setVendorDet={setVendorDet} vendorDet={vendorDet}/>)}
+                </div>
                 <br></br>
                 <button type="submit" className="submit-small">Create Event</button>
-                <Link to={"/home"}>
+                <Link to={"/events"}>
                     <button className='submit-small'>Cancel</button >
                 </ Link>
              </form>

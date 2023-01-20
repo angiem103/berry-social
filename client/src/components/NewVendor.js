@@ -25,7 +25,7 @@ function NewVendor () {
             contact_person: contactPerson,
             phone_number: phoneNumber,
             email: email,
-            desc_of_serv: desc
+            desc_of_serv: desc,
         }
     
         fetch('/vendors', {

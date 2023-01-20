@@ -73,7 +73,7 @@ function SignUp({setUser}) {
                 <label htmlFor="username" className="placeholder">Username</label>
             </div>
                 <div className="input-container ic2">
-                 <input id="password" className="input" type="text" placeholder=" " value={password} onChange={(e) => setPassword(e.target.value)}/>
+                 <input id="password" className="input" type="password" placeholder=" " value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <div className="cut cut-short"></div>
                 <label htmlFor="password" className="placeholder">Password</label>
             </div>

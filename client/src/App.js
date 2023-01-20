@@ -90,7 +90,7 @@ function App() {
   )
   return (
     <div className="App">
-      <InfoContext.Provider value={{events, setEvents, clients, setClients, vendors, currentUser}}>
+      <InfoContext.Provider value={{events, setEvents, clients, setClients, vendors, setVendors, currentUser}}>
       <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
       <Routes>
         <Route path="/clients" element={<Clients  onClientDelete={handleClientDelete} />}/>

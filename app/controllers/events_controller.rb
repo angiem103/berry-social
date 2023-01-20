@@ -31,6 +31,9 @@ class EventsController < ApplicationController
 
     def create
         event = Event.create(event_params)
+            event.vendor_details.each do |vendor_attribs|
+                event.event_vendors.create(vendor_attribs)
+            end
         render json: event, status: :created
     end
 
@@ -48,7 +51,7 @@ class EventsController < ApplicationController
     private
 
     def event_params
-        params.permit(:user_id, :name,:description, :location, :budget, :current_cost, :start_date, :end_date, :end_time, :start_time, :client_id)
+        params.permit(:user_id, :name,:description, :location, :budget, :current_cost, :start_date, :end_date, :end_time, :start_time, :client_id, vendor_details: [:vendor_id, :total_cost] )
     end
 
 end

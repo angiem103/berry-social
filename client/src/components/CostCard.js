@@ -5,7 +5,7 @@ import "../index.css";
 import "../Container.css";
 
 
-function CostCard( {cost, event}) {
+function CostCard( {cost, event, events, setEvents}) {
 
 
     const navigate = useNavigate();
@@ -13,6 +13,11 @@ function CostCard( {cost, event}) {
     const [vendorCost, setVendorCost] = useState(cost?.total_cost ?? "");
 
     const vendor = event.vendors.find(vendor => vendor.id === cost.vendor_id);
+
+    function handleChanges(o) {
+       const updatedEvent = events.find(e => e.id === event.id)
+       updatedEvent.total = o.event.total
+    }
 
     function handleSubmitChanges(e){
         e.preventDefault()
@@ -34,7 +39,7 @@ function CostCard( {cost, event}) {
             })
             .then(r => r.json())
              .then(obj => {
-                console.log(obj)
+                handleChanges(obj)
                 navigate("/events")
             })
 

@@ -7,11 +7,11 @@ import { InfoContext } from "../App";
 
 function CostManager() {
 
-    const {events} = useContext(InfoContext)
+    const {events, setEvents} = useContext(InfoContext)
 
     const params = useParams();
     const event =  events.find((event) => String(event.id) === params.id);
-    const renderCosts = event ? event.event_vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((cost) => ( <CostCard key={cost.id}  cost={cost} event={event} /> )) : undefined
+    const renderCosts = event ? event.event_vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((cost) => ( <CostCard key={cost.id}  cost={cost} event={event} events={events} setEvents={setEvents}/> )) : undefined
 
     return (
         <section id="cost-background">
