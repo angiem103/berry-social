@@ -8,13 +8,14 @@ import "../index.css";
 function Clients ( { onClientDelete } ) {
 
   const navigate = useNavigate();
-  const {clients} = useContext(InfoContext);  
+  const {currentUser} = useContext(InfoContext);  
 
-  const renderClients = clients.map((client) => (
+
+  const renderClients = currentUser ? currentUser.clients.map((client) => (
     <div key={client.id}>
       <ClientCard  client={client} onClientDelete={onClientDelete}/>
     </div>
-  ));
+  )) : null
 
   function handleNewClient(e) {
     e.preventDefault()

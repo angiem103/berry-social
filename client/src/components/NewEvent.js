@@ -116,7 +116,7 @@ function NewEvent ( ) {
                             <div className="edit-title">Manage Vendors</div>
                 <br></br>
                 <div>
-                    {vendors.map(vendor => <SelectedVendors vendor={vendor} setVendorDet={setVendorDet} vendorDet={vendorDet}/>)}
+                    {vendors ? vendors.map(vendor => <SelectedVendors vendor={vendor} setVendorDet={setVendorDet} vendorDet={vendorDet}/>) : null}
                 </div>
                 <br></br>
                 <button type="submit" className="submit-small">Create Event</button>

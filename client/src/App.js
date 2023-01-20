@@ -37,22 +37,6 @@ function App() {
     })
   },[]);
 
-  useEffect(() => {
-    fetch('/events')
-    .then(r => {
-      if(r.ok){
-        r.json().then(events => setEvents(events)
-          )
-      }
-    })
-  },[]);
-
-  useEffect(() => {
-    fetch("/vendors")
-    .then(r => r.json())
-    .then((vendors) => setVendors(vendors)
-    )
-  }, []);
 
   function handleLogin(user) {
     setCurrentUser(user)
@@ -88,6 +72,7 @@ function App() {
       </Routes>
     </div>
   )
+
   return (
     <div className="App">
       <InfoContext.Provider value={{events, setEvents, clients, setClients, vendors, setVendors, currentUser}}>

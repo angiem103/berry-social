@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../NavBar.css";
 import { useNavigate, Link } from 'react-router-dom';
+import { InfoContext } from "../App";
 
 function NavBar( {currentUser, setCurrentUser } ) {
 
     const navigate = useNavigate()
+    const{setVendors, setEvents} = useContext(InfoContext);
 
     function handleLogOut() {
         fetch('/logout',{method: "DELETE"}).then((r) => {
             if(r.ok){
                 setCurrentUser(null)
+                setVendors(null)
+                setEvents(null)
                 navigate('/')
             } 
         })
