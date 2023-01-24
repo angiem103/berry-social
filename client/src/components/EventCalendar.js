@@ -16,8 +16,8 @@ function EventCalendar() {
         <Calendar
             localizer={localizer}
             events={events}
-            startAccessor={(event) => { return moment(event.start_date + event.start_time) }}
-            endAccessor={(event) => { return moment(event.end_date)  }}
+            startAccessor={(event) => { return moment(new Date(event.start_date + event.start_time)).utc().format("YYYY-MM-DD HH:mm:ss")}}
+            endAccessor={(event) => { return moment(new Date(event.end_date + event.end_time)).utc().format("YYYY-MM-DD HH:mm:ss") }}
             style={{ height: 500, marginLeft: "25%"}}
         />
         </div>
