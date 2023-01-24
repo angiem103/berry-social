@@ -30,6 +30,7 @@ return (
         <Link to="/events" className="nav-button" >Events</Link>
         <Link to="/newevent" className="nav-button" >New Event</Link>
         <Link to="/vendors" className="nav-button" >Vendors</Link>
+        <Link to="/calendar" className="nav-button" >Calendar</Link>
         <button className="nav-button" onClick={handleLogOut}>Logout</button>
     </nav>
 

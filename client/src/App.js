@@ -12,6 +12,7 @@ import Events from "./components/Events";
 import Clients from "./components/Clients";
 import NewEvent from "./components/NewEvent";
 import Vendors from "./components/Vendors";
+import EventCalendar from "./components/EventCalendar";
 import { createContext } from "react";
 
 
@@ -86,6 +87,7 @@ function App() {
         <Route path="/newvendor" element={<NewVendor />} />
         <Route path="/newclient" element={<NewClient />} />
         <Route path="/costmanager/:id" element={<CostManager/>} />
+        <Route path="/calendar" element={<EventCalendar />} />
       </Routes>
       </InfoContext.Provider>
     </div>
