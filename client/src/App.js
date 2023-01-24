@@ -32,6 +32,7 @@ function App() {
         r.json().then(user => {
           setCurrentUser(user)
           setClients(user.clients)
+          setVendors(user.vendors)
         }
           )
       }

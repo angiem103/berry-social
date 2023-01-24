@@ -11,8 +11,6 @@ function NewEvent ( ) {
 
         const {clients, vendors, events, setEvents, currentUser} = useContext(InfoContext);
 
-        console.log(vendors)
-
         const [name, setName] = useState('');
         const [description, setDescription] = useState('');
         const [location, setLocation] = useState('');
@@ -32,8 +30,6 @@ function NewEvent ( ) {
         function handleNewEvent(e) {
             e.preventDefault()
 
-
-            console.log(vendorDet)
 
             const newEvent = {
                 user_id: currentUser.id,
