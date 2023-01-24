@@ -39,6 +39,16 @@ function App() {
     })
   },[]);
 
+  useEffect(() => {
+    fetch('/events')
+    .then(r => {
+      if(r.ok){
+        r.json().then(events => setEvents(events)
+          )
+      }
+    })
+  },[]);
+
 
   function handleLogin(user) {
     setCurrentUser(user)
@@ -64,6 +74,7 @@ function App() {
     setClients([...updatedClients])
   };
   
+
 
   if (!currentUser) 
   return (

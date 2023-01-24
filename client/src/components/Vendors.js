@@ -11,13 +11,6 @@ function Vendors ( { onVendorDelete } ) {
   const navigate = useNavigate();
 
   const {vendors, setVendors} = useContext(InfoContext);
- 
-  // useEffect(() => {
-  //   fetch("/vendors")
-  //   .then(r => r.json())
-  //   .then((userVendors) => setVendors(userVendors)
-  //   )
-  // }, []);
 
   const renderVendors = vendors ? vendors.sort( (a,b) => a.id > b.id ? 1 : -1).map((vendor) => (
     <div  key={vendor.id} >

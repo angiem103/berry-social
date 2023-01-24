@@ -9,13 +9,15 @@ function EventCalendar() {
     const localizer = momentLocalizer(moment)
     const {events} = useContext(InfoContext)
 
+    console.log(events)
+
     return (
         <div>
         <Calendar
             localizer={localizer}
             events={events}
-            startAccessor={(event) => { return moment(event.start_date).toDate() }}
-            endAccessor={(event) => { return moment(event.end_time)  }}
+            startAccessor={(event) => { return moment(event.start_date + event.start_time) }}
+            endAccessor={(event) => { return moment(event.end_date)  }}
             style={{ height: 500, marginLeft: "25%"}}
         />
         </div>
