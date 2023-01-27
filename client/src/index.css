@@ -225,12 +225,13 @@
   background-image: url("https://goalscalling.com/wp-content/uploads/2021/12/Resolutions-planning.jpg");
   display: flex;
   justify-content: center;
-  height: 100vh;
   background-size: cover;
   vertical-align: middle;
   background-attachment: fixed;
   overflow: scroll;
   padding-bottom: 50px;
+  overflow: auto;
+  min-height: 100%;
 }
 
 .new-event-form {
@@ -238,8 +239,8 @@
   border-radius: 20px;
   padding: 20px;
   width: 900px;
-  height: fit-content;
-  margin-top: 300px;
+  height:fit-content;
+  margin-top: 100px;
   width: 60%;
   margin-left: 20%;
 }

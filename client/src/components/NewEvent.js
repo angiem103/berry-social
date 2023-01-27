@@ -113,11 +113,9 @@ function NewEvent ( ) {
                     { clients ? clients.map((client) => <option key={client.id} value={client.id}>{client.name}</option>) : undefined}
 
                 </select>
-                            <div className="edit-title">Manage Vendors</div>
+                <div className="edit-title">Manage Vendors</div>
                 <br></br>
-                <div>
                     {currentUser.vendors ? currentUser.vendors.map(vendor => <SelectedVendors vendor={vendor} setVendorDet={setVendorDet} vendorDet={vendorDet}/>) : null}
-                </div>
                 <br></br>
                 <button type="submit" className="submit-small">Create Event</button>
                 <Link to={"/events"}>
