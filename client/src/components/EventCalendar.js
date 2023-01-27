@@ -14,7 +14,6 @@ function EventCalendar() {
 
         const startDate = new Date(event.start_date)
         const startTime = new Date(event.start_time)
-
         const endDate = new Date(event.end_date)
         const endTime = new Date(event.end_time)
 
@@ -27,19 +26,18 @@ function EventCalendar() {
             end,
         }
         return e
-    })
+    });
 
     return (
         <div className='calendar-background'>
-            <div>
-        <Calendar
-            localizer={localizer}
-            events={parsedEvents}
-            startAccessor="start"
-            endAccessor="end"
-            style={{ height: 500 ,  backgroundColor: "white", width:'850px', fontFamily: "sans-serif"}}
-        />
-        </div>
+            <Calendar
+                localizer={localizer}
+                events={parsedEvents}
+                startAccessor="start"
+                endAccessor="end"
+                onSelectEvent={handleSelectEvent}
+                style={{ height: 500 ,  backgroundColor: "white", width:'850px', fontFamily: "sans-serif"}}
+            />
         </div>
     );
 
