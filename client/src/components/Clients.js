@@ -8,10 +8,10 @@ import "../index.css";
 function Clients ( { onClientDelete } ) {
 
   const navigate = useNavigate();
-  const {currentUser} = useContext(InfoContext);  
+  const {currentUser, clients} = useContext(InfoContext);  
 
 
-  const renderClients = currentUser ? currentUser.clients.map((client) => (
+  const renderClients = clients ? clients.map((client) => (
     <div key={client.id}>
       <ClientCard  client={client} onClientDelete={onClientDelete}/>
     </div>

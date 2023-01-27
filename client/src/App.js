@@ -57,11 +57,12 @@ function App() {
   };
 
   function handleClientDelete(deletedClient){
-    const updatedClients = clients.filter((client) => client.id !== deletedClient.id)
-    setClients([...updatedClients])
+    const filteredClients = clients.filter((client) => client.id !== deletedClient.id)
+    setClients([...filteredClients])
+
   };
   
-
+  console.log(clients)
 
   if (!currentUser) 
   return (
