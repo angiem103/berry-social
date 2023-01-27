@@ -42,5 +42,12 @@ class EventVendorsController < ApplicationController
     def event_vendor_params
         params.permit(:event_id, :vendor_id, :total_cost)
     end
+
+    def render_not_found_response(invalid)
+        render json: { errors: invalid.record.errors }, status: :not_found
+    end
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    end
     
 end

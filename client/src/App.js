@@ -62,7 +62,6 @@ function App() {
 
   };
   
-  console.log(clients)
 
   if (!currentUser) 
   return (

@@ -12,6 +12,8 @@ function NewVendor () {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [desc, setDesc] = useState('');
+    const [vendorErrors, setVendorErrors] = useState([]);
+    
 
     const navigate = useNavigate()
 
@@ -35,15 +37,15 @@ function NewVendor () {
             },
             body: JSON.stringify(newVendor)
         })
-        .then(r => r.json())
-        .then(vendor => {
-            setVendors([...vendors,vendor])
-            navigate('/vendors')
+        .then(r => {
+            if(r.ok){
+                r.json(setVendors([...vendors,newVendor])).then(navigate('/vendors'))
+            } else {
+                r.json().then(err => setVendorErrors(err.errors))
+            }
         })
-            
-        }
-    
-    
+    }
+
     
       return (
     
@@ -74,6 +76,10 @@ function NewVendor () {
                 <Link to={"/vendors"}>
                     <button className='submit-small'>Cancel</button >
                 </ Link>
+                <br></br>
+                <ul>
+                    {vendorErrors.map((error) => <li>{error}</li>)}
+                </ul>
              </form>
             </div>
             
