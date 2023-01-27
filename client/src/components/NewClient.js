@@ -45,7 +45,7 @@ function NewClient () {
     
       return (
     
-            <div className='edit-background'>
+            <div className='create-background'>
              <form className="new-vendor-form" onSubmit={handleNewClient}>
                  <div className="edit-title">Client</div>
                  <div className="input-container ic0">

@@ -2,7 +2,7 @@ class VendorsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
-        user = User.find_by(id: session[:user_id])
+        user = User.find(session[:user_id])
         vendors = user.vendors
         render json: vendors      
     end

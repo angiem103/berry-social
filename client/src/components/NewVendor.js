@@ -49,7 +49,7 @@ function NewVendor () {
     
       return (
     
-            <div className='edit-background'>
+            <div className='create-background'>
              <form className="new-vendor-form" onSubmit={handleNewVendor}>
                  <div className="edit-title">Vendor</div>
                  <div className="input-container ic0">

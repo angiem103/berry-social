@@ -234,6 +234,20 @@
   min-height: 100%;
 }
 
+.create-background {
+  align-items: center;
+  background-image: url("https://goalscalling.com/wp-content/uploads/2021/12/Resolutions-planning.jpg");
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  vertical-align: middle;
+  background-attachment: fixed;
+  overflow: scroll;
+  padding-bottom: 50px;
+  overflow: auto;
+  min-height: 100vh;
+}
+
 .new-event-form {
   background-color: rgba(238, 99, 143, 0.598);
   border-radius: 20px;
