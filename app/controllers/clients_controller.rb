@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
         user = User.find(session[:user_id])
@@ -18,7 +19,7 @@ class ClientsController < ApplicationController
     end
 
     def create
-        client = Client.create(client_params)
+        client = Client.create!(client_params)
         render json: client, status: :created
     end
 
@@ -36,6 +37,9 @@ class ClientsController < ApplicationController
 
     def client_params
         params.permit(:user_id, :name, :phone_number, :email)
+    end
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 
 end

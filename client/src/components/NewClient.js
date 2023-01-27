@@ -10,6 +10,7 @@ function NewClient () {
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
+    const [clientErrors, setClientErrors] = useState([])
 
     const navigate = useNavigate()
 
@@ -31,13 +32,13 @@ function NewClient () {
             },
             body: JSON.stringify(newClient)
         })
-        .then(r => r.json())
-        .then(client => {
-            setClients([...clients,client])
-            navigate('/clients')
+        .then(r => {
+            if(r.ok){
+                r.json(setClients([...clients,newClient])).then(navigate('/clients'))
+            } else {
+                r.json().then(err => setClientErrors(err.errors))
+            }
         })
-
-            
         }
     
     
@@ -63,6 +64,9 @@ function NewClient () {
                 <Link to={"/clients"}>
                     <button className='submit-small'>Cancel</button >
                 </ Link>
+                <ul>
+                    {clientErrors.map((error) => <li>{error}</li>)}
+                </ul>
              </form>
             </div>
             
