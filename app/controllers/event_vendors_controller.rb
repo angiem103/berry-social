@@ -1,18 +1,19 @@
 class EventVendorsController < ApplicationController
 
-    skip_before_action :authorized, only: [:update, :index]
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-    def index
-        event_vendors = EventVendor.all
-        if event_vendors
-        render json: event_vendors
-        else
-            render json: {error: "No Events"}, status: :not_found
-        end
-    end
+    # def index
+    #     event_vendors = EventVendor.all
+    #     if event_vendors
+    #     render json: event_vendors
+    #     else
+    #         render json: {error: "No Events"}, status: :not_found
+    #     end
+    # end
 
     def create
-        event_vendor = EventVendor.create(event_vendor_params)
+        event_vendor = EventVendor.create!(event_vendor_params)
         render json: event, status: :created
     end
 
