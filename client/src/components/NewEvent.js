@@ -9,7 +9,7 @@ function NewEvent ( ) {
 
         const navigate = useNavigate();
 
-        const {clients, vendors, events, setEvents, currentUser} = useContext(InfoContext);
+        const {clients, events, setEvents, currentUser} = useContext(InfoContext);
 
         const [name, setName] = useState('');
         const [description, setDescription] = useState('');
@@ -113,7 +113,7 @@ function NewEvent ( ) {
                             <div className="edit-title">Manage Vendors</div>
                 <br></br>
                 <div>
-                    {vendors ? vendors.map(vendor => <SelectedVendors vendor={vendor} setVendorDet={setVendorDet} vendorDet={vendorDet}/>) : null}
+                    {currentUser.vendors ? currentUser.vendors.map(vendor => <SelectedVendors vendor={vendor} setVendorDet={setVendorDet} vendorDet={vendorDet}/>) : null}
                 </div>
                 <br></br>
                 <button type="submit" className="submit-small">Create Event</button>

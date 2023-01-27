@@ -8,18 +8,35 @@ import "../index.css"
 function EventCalendar() {
 
     const localizer = momentLocalizer(moment)
-    const {events} = useContext(InfoContext)
+    const {currentUser} = useContext(InfoContext)
 
-    console.log(events)
+    const parsedEvents = currentUser.events.map(event => {
+
+        const startDate = new Date(event.start_date)
+        const startTime = new Date(event.start_time)
+
+        const endDate = new Date(event.end_date)
+        const endTime = new Date(event.end_time)
+
+        const start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDay(), startTime.getHours(), startTime.getMinutes(), startTime.getSeconds())
+        const end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDay(), endTime.getHours(), endTime.getMinutes(), endTime.getSeconds())
+        const e = {
+            id : event.id,
+            title : event.name,
+            start,
+            end,
+        }
+        return e
+    })
 
     return (
         <div className='calendar-background'>
             <div>
         <Calendar
             localizer={localizer}
-            events={events}
-            startAccessor={(event) => { return moment(event.start_date + event.start_time) }}
-            endAccessor={(event) => { return moment(event.end_date + event.end_time) }}
+            events={parsedEvents}
+            startAccessor="start"
+            endAccessor="end"
             style={{ height: 500 ,  backgroundColor: "white", width:'850px', fontFamily: "sans-serif"}}
         />
         </div>
@@ -29,3 +46,5 @@ function EventCalendar() {
 };
 
 export default EventCalendar;
+
+
