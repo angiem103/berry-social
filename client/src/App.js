@@ -32,23 +32,10 @@ function App() {
         r.json().then(user => {
           setCurrentUser(user)
           setClients(user.clients)
-          setVendors(user.vendors)
-        }
-          )
+        })
       }
     })
   },[]);
-
-  useEffect(() => {
-    fetch('/events')
-    .then(r => {
-      if(r.ok){
-        r.json().then(events => setEvents(events)
-          )
-      }
-    })
-  },[]);
-
 
   function handleLogin(user) {
     setCurrentUser(user)

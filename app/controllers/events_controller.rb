@@ -11,7 +11,8 @@ class EventsController < ApplicationController
     end
 
     def show
-        event = Event.find_by(id: params[:id])
+        user = User.find_by(id: session[:user_id])
+        event = user.events.find_by(id: params[:id])
         if event
             render json: event
         else
@@ -20,7 +21,8 @@ class EventsController < ApplicationController
     end
 
     def update
-        event = Event.find_by(id: params[:id])
+        user = User.find_by(id: session[:user_id])
+        event = user.events.find_by(id: params[:id])
         if event
             event.update(event_params)
             render json: event
@@ -38,7 +40,8 @@ class EventsController < ApplicationController
     end
 
     def destroy
-        event = Event.find_by(id: params[:id])
+        user = User.find_by(id: session[:user_id])
+        event = user.events.find_by(id: params[:id])
         if event
             event.destroy
             head :no_content

@@ -3,6 +3,7 @@ import { InfoContext } from "../App";
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import "../index.css"
 
 function EventCalendar() {
 
@@ -12,14 +13,16 @@ function EventCalendar() {
     console.log(events)
 
     return (
-        <div>
+        <div className='calendar-background'>
+            <div>
         <Calendar
             localizer={localizer}
             events={events}
-            startAccessor={(event) => { return moment(new Date(event.start_date + event.start_time)).utc().format("YYYY-MM-DD HH:mm:ss")}}
-            endAccessor={(event) => { return moment(new Date(event.end_date + event.end_time)).utc().format("YYYY-MM-DD HH:mm:ss") }}
-            style={{ height: 500, marginLeft: "25%"}}
+            startAccessor={(event) => { return moment(event.start_date + event.start_time) }}
+            endAccessor={(event) => { return moment(event.end_date + event.end_time) }}
+            style={{ height: 500 ,  backgroundColor: "white", width:'850px', fontFamily: "sans-serif"}}
         />
+        </div>
         </div>
     );
 

@@ -5,7 +5,7 @@ import "../index.css";
 import "../Container.css";
 
 
-function CostCard( {cost, event, events, setEvents}) {
+function CostCard( {cost, event, events}) {
 
 
     const navigate = useNavigate();

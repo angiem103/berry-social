@@ -6,5 +6,7 @@ class User < ApplicationRecord
     validates :first_name, :last_name, :phone_number, :email, presence: true
 
     has_many :clients
+    has_many :vendors
+    has_many :events
 
 end

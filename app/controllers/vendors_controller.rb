@@ -1,12 +1,13 @@
 class VendorsController < ApplicationController
     def index
         user = User.find_by(id: session[:user_id])
-        vendors = Vendor.all.select{|v| v.user_id == user.id}
+        vendors = user.vendors
         render json: vendors      
     end
 
     def show
-        vendor = Vendor.find_by(id: params[:id])
+        user = User.find_by(id: session[:user_id])
+        vendor = user.vendors.find_by(id: params[:id])
         if vendor
             render json: vendor
         else
@@ -21,7 +22,8 @@ class VendorsController < ApplicationController
 
 
     def destroy
-        vendor = Vendor.find_by(id: params[:id])
+        user = User.find_by(id: session[:user_id])
+        vendor = user.vendors.find_by(id: params[:id])
         if vendor
             vendor.destroy
             head :no_content
