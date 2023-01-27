@@ -35,7 +35,6 @@ function EventCalendar() {
                 events={parsedEvents}
                 startAccessor="start"
                 endAccessor="end"
-                onSelectEvent={handleSelectEvent}
                 style={{ height: 500 ,  backgroundColor: "white", width:'850px', fontFamily: "sans-serif"}}
             />
         </div>
