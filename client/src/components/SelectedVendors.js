@@ -24,6 +24,8 @@ function SelectedVendors ( { vendor, vendorDet, setVendorDet} ) {
         } else {
           setVendId(undefined)
         }
+
+        console.log(vendor)
       };
     
     function handleClick() {
@@ -35,6 +37,7 @@ function SelectedVendors ( { vendor, vendorDet, setVendorDet} ) {
       setVendorDet([...vendorDet, obj])
       setIsClicked(true)
     }
+
 
     return (
       <div style={inputStyle}>

@@ -27,7 +27,8 @@ class EventsController < ApplicationController
     end
 
     def create
-        event = Event.create!(event_params)
+        user = User.find(session[:user_id])
+        event = user.events.create!(event_params)
             event.vendor_details.each do |vendor_attribs|
                 event.event_vendors.create(vendor_attribs)
             end

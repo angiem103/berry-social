@@ -38,7 +38,12 @@ function NewVendor () {
         })
         .then(r => {
             if(r.ok){
-                r.json(setVendors([...vendors,newVendor])).then(navigate('/vendors'))
+                // r.json(setVendors([...vendors,newVendor])).then(navigate('/vendors'))
+                r.json()
+                .then(newVdr => {
+                    setVendors([...vendors,newVdr])
+                    navigate('/vendors')
+                })
             } else {
                 r.json().then(err => setVendorErrors(err.errors))
             }
