@@ -20,11 +20,11 @@ export const InfoContext = createContext();
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState();
   const [events, setEvents] = useState([]);
   const [clients, setClients] = useState([]);
   const [vendors, setVendors] = useState ([]);
-  
+
   useEffect(() => {
     fetch('/auth')
     .then(r => {
@@ -36,6 +36,30 @@ function App() {
       }
     })
   },[]);
+
+  useEffect(() => {
+    fetch('/events')
+    .then(r => {
+      if(r.ok){
+        r.json().then(evts => {
+          setEvents(evts)
+        })
+      }
+    })
+  },[currentUser]);
+
+
+  useEffect(() => {
+    fetch('/vendors')
+    .then(r => {
+      if(r.ok){
+        r.json().then(vend => {
+          setVendors(vend)
+        })
+      }
+    })
+  },[currentUser]);
+
 
   function handleLogin(user) {
     setCurrentUser(user)
@@ -62,7 +86,6 @@ function App() {
 
   };
   
-
   if (!currentUser) 
   return (
     <div className="App">
@@ -86,7 +109,7 @@ function App() {
         <Route path="/newvendor" element={<NewVendor />} />
         <Route path="/newclient" element={<NewClient />} />
         <Route path="/costmanager/:id" element={<CostManager/>} />
-        <Route path="/calendar" element={<EventCalendar />} />
+        <Route path="/calendar" element={<EventCalendar events={events} />} />
       </Routes>
       </InfoContext.Provider>
     </div>

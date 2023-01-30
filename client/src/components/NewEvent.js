@@ -9,7 +9,7 @@ function NewEvent ( ) {
 
         const navigate = useNavigate();
 
-        const {clients, events, setEvents, currentUser} = useContext(InfoContext);
+        const {clients, events, setEvents, currentUser, vendors} = useContext(InfoContext);
 
         const [name, setName] = useState('');
         const [description, setDescription] = useState('');
@@ -23,11 +23,13 @@ function NewEvent ( ) {
         const [vendorDet, setVendorDet] = useState([]);
         const [eventErrors, setEventErrors] = useState([]);
     
+        console.log(clients)
     
         function handleClientChange(e) {
             setSelectedClient(e.target.value)
+            console.log(selectedClient)
        }
-    
+
         function handleNewEvent(e) {
             e.preventDefault()
 
@@ -45,9 +47,10 @@ function NewEvent ( ) {
                 client_id: selectedClient,
                 vendor_details: vendorDet
             };
+    
+    
+            console.log(newEvent)
 
-    
-    
             fetch('/events', {
                 method: 'POST',
                 headers: {
@@ -62,8 +65,9 @@ function NewEvent ( ) {
                     r.json().then(err => setEventErrors(err.errors))
                 }
             })
+
+            setVendorDet([])
             
-    
         }
     
     
@@ -110,12 +114,12 @@ function NewEvent ( ) {
                     <option disabled={true} value="">
                             Choose Client
                     </option>
-                    { clients ? clients.map((client) => <option key={client.id} value={client.id}>{client.name}</option>) : undefined}
+                    {clients.map((client) => <option key={client.id} value={client.id}>{client.name}</option>)}
 
                 </select>
                 <div className="edit-title">Manage Vendors</div>
                 <br></br>
-                    {currentUser.vendors ? currentUser.vendors.map(vendor => <SelectedVendors vendor={vendor} setVendorDet={setVendorDet} vendorDet={vendorDet}/>) : null}
+                    {vendors ? vendors.map(vendor => <SelectedVendors vendor={vendor} setVendorDet={setVendorDet} vendorDet={vendorDet}/>) : null}
                 <br></br>
                 <button type="submit" className="submit-small">Create Event</button>
                 <Link to={"/events"}>

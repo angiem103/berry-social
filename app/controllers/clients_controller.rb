@@ -19,7 +19,8 @@ class ClientsController < ApplicationController
     end
 
     def create
-        client = Client.create!(client_params)
+        user = User.find_by(id: session[:user_id])
+        client = user.client.create!(client_params)
         render json: client, status: :created
     end
 
@@ -36,7 +37,7 @@ class ClientsController < ApplicationController
 
 
     def client_params
-        params.permit(:user_id, :name, :phone_number, :email)
+        params.permit( :name, :phone_number, :email)
     end
     def render_unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity

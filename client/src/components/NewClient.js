@@ -19,7 +19,6 @@ function NewClient () {
         e.preventDefault()
 
         const newClient = {
-            user_id: currentUser.id,
             name: name,
             phone_number: phoneNumber,
             email: email,

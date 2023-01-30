@@ -8,7 +8,7 @@ import "../index.css";
 function Clients ( { onClientDelete } ) {
 
   const navigate = useNavigate();
-  const {currentUser, clients} = useContext(InfoContext);  
+  const {clients} = useContext(InfoContext);  
 
 
   const renderClients = clients ? clients.map((client) => (
