@@ -77,7 +77,7 @@ function NewVendor () {
                 </ Link>
                 <br></br>
                 <ul>
-                    {vendorErrors.map((error) => <li>{error}</li>)}
+                    {vendorErrors ? vendorErrors.map((error) => <li>{error}</li>): null}
                 </ul>
              </form>
             </div>

@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
     wrap_parameters format: []
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid_response
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create, :index]
 
-    # def index
-    #     users = User.all
-    #     render json: users, include: ['clients', 'clients.events', 'events', 'vendors']
-    # end
+    def index
+        users = User.all
+        render json: users, include: ['clients', 'clients.events', 'events', 'vendors']
+    end
 
     def create
         user = User.create!(user_params)

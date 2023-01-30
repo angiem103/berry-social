@@ -18,7 +18,8 @@ class VendorsController < ApplicationController
     end
 
     def create
-        vendor = Vendor.create!(vendor_params)
+        user = User.find(session[:user_id])
+        vendor = user.vendors.create!(vendor_params)
         render json: vendor, status: :created
     end
 
