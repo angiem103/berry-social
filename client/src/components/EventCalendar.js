@@ -5,9 +5,11 @@ import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../index.css"
 
-function EventCalendar( {events} ) {
+function EventCalendar() {
 
     const localizer = momentLocalizer(moment)
+
+    const {events} = useContext(InfoContext)
 
     const parsedEvents = events.map(event => {
 

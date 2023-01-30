@@ -119,7 +119,7 @@ function App() {
         <Route path="/newvendor" element={<NewVendor />} />
         <Route path="/newclient" element={<NewClient />} />
         <Route path="/costmanager/:id" element={<CostManager/>} />
-        <Route path="/calendar" element={<EventCalendar events={events} />} />
+        <Route path="/calendar" element={<EventCalendar />} />
       </Routes>
       </InfoContext.Provider>
     </div>
