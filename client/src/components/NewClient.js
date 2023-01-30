@@ -33,7 +33,12 @@ function NewClient () {
         })
         .then(r => {
             if(r.ok){
-                r.json(setClients([...clients,newClient])).then(navigate('/clients'))
+                r.json() 
+                .then(newC => {
+                    setClients([...clients,newC])
+                    navigate('/clients')
+                })
+                // r.json(setClients([...clients,newClient])).then(navigate('/clients'))
             } else {
                 r.json().then(err => setClientErrors(err.errors))
             }

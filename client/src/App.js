@@ -31,11 +31,21 @@ function App() {
       if(r.ok){
         r.json().then(user => {
           setCurrentUser(user)
-          setClients(user.clients)
         })
       }
     })
   },[]);
+
+  useEffect(() => {
+    fetch('/clients')
+    .then(r => {
+      if(r.ok){
+        r.json().then(client => {
+          setClients(client )
+        })
+      }
+    })
+  },[currentUser]);
 
   useEffect(() => {
     fetch('/events')

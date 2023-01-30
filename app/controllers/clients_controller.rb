@@ -19,8 +19,8 @@ class ClientsController < ApplicationController
     end
 
     def create
-        user = User.find_by(id: session[:user_id])
-        client = user.client.create!(client_params)
+        user = User.find(session[:user_id])
+        client = user.clients.create!(client_params)
         render json: client, status: :created
     end
 

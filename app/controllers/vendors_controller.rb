@@ -37,7 +37,7 @@ class VendorsController < ApplicationController
     private
 
     def vendor_params
-        params.permit(:user_id, :name ,:contact_person, :phone_number, :email, :desc_of_serv)
+        params.permit(:name ,:contact_person, :phone_number, :email, :desc_of_serv)
     end
     def render_unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity

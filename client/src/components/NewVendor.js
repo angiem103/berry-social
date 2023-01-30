@@ -22,7 +22,6 @@ function NewVendor () {
         e.preventDefault()
 
         const newVendor = {
-            user_id: currentUser.id,
             name: name,
             contact_person: contactPerson,
             phone_number: phoneNumber,

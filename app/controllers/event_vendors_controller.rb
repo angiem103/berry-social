@@ -12,10 +12,10 @@ class EventVendorsController < ApplicationController
     #     end
     # end
 
-    def create
-        event_vendor = EventVendor.create!(event_vendor_params)
-        render json: event, status: :created
-    end
+    # def create
+    #     event_vendor = EventVendor.create!(event_vendor_params)
+    #     render json: event, status: :created
+    # end
 
 
     def show

@@ -22,12 +22,10 @@ function NewEvent ( ) {
         const [selectedClient, setSelectedClient] = useState('');
         const [vendorDet, setVendorDet] = useState([]);
         const [eventErrors, setEventErrors] = useState([]);
-    
-        console.log(clients)
+
     
         function handleClientChange(e) {
             setSelectedClient(e.target.value)
-            console.log(selectedClient)
        }
 
         function handleNewEvent(e) {
@@ -60,7 +58,12 @@ function NewEvent ( ) {
             })
             .then(r => {
                 if(r.ok){
-                    r.json(setEvents([...events,newEvent])).then(navigate('/events'))
+                    r.json()
+                    .then(newE => {
+                        setEvents([...events,newE])
+                        navigate('/events')
+                    })
+                    // r.json(setEvents([...events,newEvent])).then(navigate('/events'))
                 } else {
                     r.json().then(err => setEventErrors(err.errors))
                 }
@@ -126,7 +129,7 @@ function NewEvent ( ) {
                     <button className='submit-small'>Cancel</button >
                 </ Link>
                 <ul>
-                    {eventErrors.map((error) => <li>{error}</li>)}
+                    {eventErrors ? eventErrors.map((error) => <li>{error}</li>): null}
                 </ul>
              </form>
             </div>
